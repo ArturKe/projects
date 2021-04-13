@@ -4,15 +4,10 @@
     padding: 0;
 }
 
-.portfolio{
-    /* height: 600px; */
 
-}
 
 .portfolio .port_wraper{
     width: 70%;
-    /* min-height: 550px; */
-    /* background-color: cadetblue; */
     margin: 30px auto 0 auto;
     display: flex;
     justify-content: center;
