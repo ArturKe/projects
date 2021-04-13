@@ -99,9 +99,11 @@ margin: 0 20px 0 20px;
 .proj_item .item_desc{
     background-color: deeppink;
     height: 20%;
-    padding: 5px;
     font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .proj_item .item_link{
