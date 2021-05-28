@@ -9,7 +9,7 @@
     width: 70%;
     /* min-height: 550px; */
     /* background-color: cadetblue; */
-    margin: 30px auto 50px auto;
+    margin: 30px auto 0px auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -32,7 +32,7 @@ margin: 0 20px 0 20px;
     /* background-color: coral; */
     margin-top: 20px;
     position: relative;
-    margin-bottom: 450px;
+    margin-bottom: 500px;
 }
 
 .port_desc .ru_desc{
