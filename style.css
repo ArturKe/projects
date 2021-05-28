@@ -32,6 +32,7 @@ margin: 0 20px 0 20px;
     /* background-color: coral; */
 }
 
+/* ---------------------------------Lang Buttons */
 .port_desc .header{
     display: block;
     font-family: Verdana, sans-serif;
@@ -41,7 +42,22 @@ margin: 0 20px 0 20px;
 
 .port_desc .header_wraper{
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
+
+.port_desc .eng_button{
+    font-family: Verdana, sans-serif;
+    font-weight: 800;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    
+    border: 2px solid rgb(61, 61, 61);
+    border-radius: 5px;
 }
 
 .port_desc .personal{
