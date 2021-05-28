@@ -27,10 +27,26 @@ margin: 0 20px 0 20px;
 }
 
 .port_wraper .port_desc{
-    min-width: 200px;
-    max-width: 400px;
+    min-width: 400px;
+    max-width: 500px;
     /* background-color: coral; */
     margin-top: 20px;
+    position: relative;
+    margin-bottom: 400px;
+}
+
+.port_desc .ru_desc{
+    position: absolute;
+}
+.port_desc .eng_desc{
+    position: absolute;
+}
+
+/* .active_desc{
+    opacity: 1;
+} */
+.nonactive_desc{
+    opacity: 0;
 }
 
 /* ---------------------------------Lang Buttons */
