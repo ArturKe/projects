@@ -7,6 +7,14 @@ const en_btn = document.querySelector('.en_btn')
 const eng_desc =document.querySelector('.eng_desc')
 const ru_desc =document.querySelector('.ru_desc')
 
+const list = document.querySelector('.proj_list')
+
+const projList = [
+	{title: 'ThreeJS', desc: 'Venus de Milo 3D', link:'TestThree/index.html'},
+	{title: 'Landing page Uber', desc: 'Uber landing page for PC', link:'Proj_4/index.html'},
+    {title: 'Landing page Wordpress', desc: 'Wordpress landing page for PC', link:'Proj_1/index.html'},
+] 
+
 btn.addEventListener('click',function(event){
     // console.log(event.target.classList.value)
     if(event.target.classList.contains('ru_btn')){
@@ -33,3 +41,24 @@ btn.addEventListener('click',function(event){
 
     
 })
+
+
+list.innerHTML = ''
+
+
+for(let value of projList){
+	console.log(`Title: ${value.title} and Desc:${value.desc}`)
+}
+
+
+for(let value of projList){
+list.innerHTML += `<div class="proj_item">
+                    <div class="item_img">
+                        <img class='img_inside' src="img/Venus.JPG" alt="">
+                    </div>
+		    <div class="item_link">
+                        <a href="${value.link}">${value.title}</a>
+                    </div>
+                    <div class="item_desc">${value.desc}</div>      
+                </div>`
+}
