@@ -838,4 +838,8 @@ footer{
         flex-wrap: wrap;
         padding-top: 20px;
     }
+    .footer_links .links_top{
+       font-size: 14px;
+    }
+    
 }
