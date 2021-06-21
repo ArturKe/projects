@@ -307,7 +307,7 @@ header nav{
 /* --------------------------------------------- Promo */
 .promo{
     /* position: relative; */
-    background: url('../img/uber_bg.png') center center/cover no-repeat;
+    background: url('../img/uber_bg.jpg') center center/cover no-repeat;
     min-height: 450px;
     padding: 152px 0 110px 0;
     
