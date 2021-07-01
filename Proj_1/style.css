@@ -6,7 +6,7 @@
 
 
 .first{
-    min-height: 797px;
+    /* min-height: 797px; */
     background: url('img/main_bg.png') center center/cover no-repeat;
     
 }
@@ -113,10 +113,10 @@ color: #FFFFFF;
 .second{
     min-height: 700px;
     background: #EFEFEF;
-    padding: 88px  0 0 88px;
+    padding: 30px 10px 0 10px;
 }
 .second .second_wraper{
-    min-width: 607px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -175,7 +175,7 @@ color: #FFFFFF;
 
 .third_wraper{
 position: relative;
-min-width: 800px;
+max-width: 1200px;
 margin: 0 auto;
 }
 
@@ -216,8 +216,9 @@ font-weight: 900;
 }
 
 .third_wraper .optim_text_wraper{
-    width: 85%;
-    margin-left:40% ;
+    /* width: 85%; */
+    margin-left:250px ;
+    padding-right: 20px;
 }
 
 .four{
@@ -359,3 +360,23 @@ margin-top: 40px;
     text-align: center;
 }
 
+@media (max-width:400px) {
+    .optim_img{
+        display:none;
+    }
+    .third_wraper .optim_text_wraper {
+        margin-left: 20px;
+    }
+    .first_section .btn {
+        max-width: 250px;
+    }
+    .first_section .text_2 {
+        font-size: 65px;
+    }
+    .five_container .five_btn{
+        max-width: 250px;
+    }
+    .first_section .text_1, .text_3 {
+        font-size: 30px;
+    }
+}
