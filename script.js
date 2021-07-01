@@ -54,7 +54,7 @@ for(let value of projList){
 for(let value of projList){
 list.innerHTML += `<div class="proj_item">
                     <div class="item_img">
-                        <img class='img_inside' src="img/Venus.JPG" alt="">
+                        <img class='img_inside' src="${value.img}" alt="">
                     </div>
 		    <div class="item_link">
                         <a href="${value.link}">${value.title}</a>
