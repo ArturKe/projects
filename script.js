@@ -10,9 +10,9 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
-	{title: 'ThreeJS', desc: 'Venus de Milo 3D', link:'TestThree/index.html'},
-	{title: 'Landing page Uber', desc: 'Uber landing page for PC', link:'Proj_4/index.html'},
-    {title: 'Landing page Wordpress', desc: 'Wordpress landing page for PC', link:'Proj_1/index.html'},
+	{title: 'ThreeJS', desc: 'Venus de Milo 3D', link:'TestThree/index.html',img:'img/Venus.JPG'},
+	{title: 'Landing page Uber', desc: 'Uber landing page for PC', link:'Proj_4/index.html',img:'img/LandingUber.JPG'},
+    {title: 'Landing page Wordpress', desc: 'Wordpress landing page for PC', link:'Proj_1/index.html',img:'img/Landing.JPG'},
 ] 
 
 btn.addEventListener('click',function(event){
