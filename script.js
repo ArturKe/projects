@@ -53,8 +53,7 @@ for(let value of projList){
 
 for(let value of projList){
 list.innerHTML += `<div class="proj_item">
-                    <div class="item_img">
-                        <img class='img_inside' src="${value.img}" alt="">
+                    <div class="item_img" style="background: url(${value.img})  top/cover no-repeat">      
                     </div>
 		    <div class="item_link">
                         <a href="${value.link}">${value.title}</a>
@@ -62,3 +61,4 @@ list.innerHTML += `<div class="proj_item">
                     <div class="item_desc">${value.desc}</div>      
                 </div>`
 }
+

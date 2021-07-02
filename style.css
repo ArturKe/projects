@@ -159,6 +159,8 @@ margin: 0 20px 0 20px;
 .proj_item .item_img{
     /* background-color: darkorange; */
     height: 60%;
+    
+    /* background-size: cover; */
 }
 
 .item_img .img_inside{
