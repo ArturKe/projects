@@ -25,11 +25,24 @@ burger.addEventListener('click',(e)=>{
     }
 })
 
-// if(menu.style.left === '100%'){
-//     menu.style.left='0'
-//     document.body.style.overflow='hidden'
-// } else{
-//     menu.style.left='100%';
-//     document.body.style.overflow=''
+//-------------------------------------------------------------------PopUp
+const popupBtnCls = document.querySelector('.popup__close')
+document.querySelector('.subheader_button').addEventListener("click",openPopup);
+document.querySelector('.promo_button').addEventListener("click",openPopup);
+document.querySelector('.popup__back').addEventListener("click",closePopup);
 
-// }
+popupBtnCls.addEventListener('click',(e)=>{
+  console.log('PopUp');
+  e.preventDefault();
+  closePopup();
+})
+
+function closePopup (){
+  document.querySelector('.popup').classList.remove('popup_open');
+  document.body.style.overflow=""
+}
+
+function openPopup (){
+  document.querySelector('.popup').classList.add('popup_open'); 
+  document.body.style.overflow="hidden";
+}
