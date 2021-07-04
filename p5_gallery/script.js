@@ -92,5 +92,82 @@ const glrImg =[
       allDots[curentStep].style.background = "red"
       allDots[curentStep].style.transform = "scale(1.5)"
     } // Берёт все точки и обновляет цвет и размер в соответствии с текущим номером изображения
+
+
+//-----------------------------Listener---DragbleCube
+
+
+const lis = document.querySelector('.listener__block')
+let triger = false
+let offset = 0
+
+lis.addEventListener("mousemove",(e)=>{
+  // console.log('Down')
+  document.querySelector('.listener_info').innerHTML =`<div>X: ${e.x}  Y:${e.y}</div>
+  <div>X: ${e.layerX}  Y:${e.layerY}</div>
+  <div>X: ${e.movementX}  Y:${e.movementY}</div>`
+  // lis.addEventListener("mousemove",(e)=>{
+  //   console.log('Moviing')})
+ 
+   
+  if (triger && e.x >= 200 && e.x <=500){
+    console.log(triger)
+    console.log(offset)
+     lis.style.left = `${e.x - offset}px`
+   }
+  
+})
+
+// let x = 10;
+
+lis.addEventListener("mousedown",(e)=>{
+  lis.style.background="red"
+  triger = true
+  // console.log(e)
+  offset = e.layerX 
+})
+
+lis.addEventListener("mouseup",(e)=>{
+  lis.style.background="rgba(100, 148, 237, 0.843)"
+  triger = false  
+})
+
+lis.addEventListener("mouseout",(e)=>{
+  lis.style.background="rgba(100, 148, 237, 0.843)"
+  triger = false  
+})
+//-------------------Touch events
+lis.addEventListener("touchmove",(e)=>{
+  // console.log('Down')
+  document.querySelector('.listener_info').innerHTML =`<div>X: ${e.x}  Y:${e.y}</div>
+  <div>clientX: ${Math.floor(e.touches[0].clientX)}  Y:${Math.floor(e.touches[0].clientY)}</div>
+  <div>screenX: ${Math.floor(e.touches[0].screenX)}  Y:${Math.floor(e.touches[0].screenY)}</div>
+  <div>pageX: ${Math.floor(e.touches[0].pageX)}  pageY:${Math.floor(e.touches[0].pageY)}</div>
+  <div>X: ${window.getComputedStyle(lis).width}  Y:${window.getComputedStyle(lis).height}</div>
+  <div>radX: ${Math.floor(e.touches[0].radiusX)}  radY:${Math.floor(e.touches[0].radiusY)}</div>`
+  
+  console.log('Touch Moviing')
+ 
+   
+  if (triger && e.x >= 200 && e.x <=500){
+    console.log(triger)
+    console.log(offset)
+     lis.style.left = `${e.x - offset}px`
+   }
+  
+})
+
+lis.addEventListener("touchstart",(e)=>{
+  lis.style.background="red"
+  triger = true
+  console.log(e)
+  console.log('Touch Start')
+  offset = e.layerX 
+})
+
+lis.addEventListener("touchend",(e)=>{
+  lis.style.background="rgba(100, 148, 237, 0.843)"
+  triger = false  
+})
   
   
