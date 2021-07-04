@@ -100,6 +100,7 @@ const glrImg =[
 const lis = document.querySelector('.listener__block')
 let triger = false
 let offset = 0
+const moveBox = document.querySelector('.listener__box')
 
 lis.addEventListener("mousemove",(e)=>{
   // console.log('Down')
@@ -147,6 +148,11 @@ lis.addEventListener("touchmove",(e)=>{
   <div>radX: ${Math.floor(e.touches[0].radiusX)}  radY:${Math.floor(e.touches[0].radiusY)}</div>`
   
   console.log('Touch Moviing')
+
+  
+  
+  moveBox.style.transform =`translate(${(Math.floor(e.touches[0].clientX))-30}px, 150px)`
+ 
  
    
   if (triger && e.x >= 200 && e.x <=500){
