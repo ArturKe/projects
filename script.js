@@ -13,6 +13,7 @@ const projList = [
 	{title: 'ThreeJS', desc: 'Venus de Milo 3D', link:'TestThree/index.html',img:'img/Venus.JPG'},
 	{title: 'Landing page Uber', desc: 'Uber landing page for PC', link:'Proj_4/index.html',img:'img/LandingUber.JPG'},
     {title: 'Landing page Wordpress', desc: 'Wordpress landing page for PC', link:'Proj_1/index.html',img:'img/Landing.JPG'},
+    {title: 'JS Gallery', desc: 'Image gallery like Instagramm', link:'p5_gallery/index.html',img:'img/Gallery.JPG'},
 ] 
 
 btn.addEventListener('click',function(event){
