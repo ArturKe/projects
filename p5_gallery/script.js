@@ -96,7 +96,6 @@ const glrImg =[
 
 //-----------------------------Listener---DragbleCube
 
-
 const lis = document.querySelector('.listener__block')
 let triger = false
 let offset = 0
@@ -138,6 +137,8 @@ lis.addEventListener("mouseout",(e)=>{
   triger = false  
 })
 //-------------------Touch events
+let startX = 0, endX = 0
+
 lis.addEventListener("touchmove",(e)=>{
   // console.log('Down')
   document.querySelector('.listener_info').innerHTML =`<div>X: ${e.x}  Y:${e.y}</div>
@@ -166,14 +167,34 @@ lis.addEventListener("touchmove",(e)=>{
 lis.addEventListener("touchstart",(e)=>{
   lis.style.background="red"
   triger = true
-  console.log(e)
+  // console.log(e)
   console.log('Touch Start')
-  offset = e.layerX 
+  startX = Math.floor(e.touches[0].clientX)
+
 })
 
 lis.addEventListener("touchend",(e)=>{
   lis.style.background="rgba(100, 148, 237, 0.843)"
-  triger = false  
+  triger = false 
+  // console.log(e.changedTouches[0].clientX) 
+  endX = Math.floor(e.changedTouches[0].clientX)
+  swipeInfo()
 })
+
+function swipeInfo(){
+  let state
+if(Math.abs(startX-endX) >= 110){
+  if(startX > endX){
+    state = "<<<<"
+  } else {
+    state = ">>>>"
+  }
+} else { state = "Stay" }
+ 
+  document.querySelector('.listener_info').innerHTML +=`<div>Direction: ${state} ${Math.abs(startX-endX)} </div>`
+  
+}
+
+
   
   
