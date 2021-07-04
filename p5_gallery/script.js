@@ -183,7 +183,7 @@ lis.addEventListener("touchend",(e)=>{
 
 function swipeInfo(){
   let state
-if(Math.abs(startX-endX) >= 110){
+if(Math.abs(startX-endX) >= 80){
   if(startX > endX){
     state = "<<<<"
   } else {
