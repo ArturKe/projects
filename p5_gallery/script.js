@@ -125,11 +125,14 @@ lis.addEventListener("mousedown",(e)=>{
   triger = true
   // console.log(e)
   offset = e.layerX 
+  document.body.style.overflow = "hidden"
 })
 
 lis.addEventListener("mouseup",(e)=>{
   lis.style.background="rgba(100, 148, 237, 0.843)"
   triger = false  
+  document.body.style.overflow = ""
+  moveBox.style.transition =""
 })
 
 lis.addEventListener("mouseout",(e)=>{
@@ -152,7 +155,7 @@ lis.addEventListener("touchmove",(e)=>{
 
   
   
-  moveBox.style.transform =`translate(${(Math.floor(e.touches[0].clientX))-30}px, 150px)`
+  moveBox.style.transform =`translate(${(Math.floor(e.touches[0].clientX))-30}px, 170px)`
  
  
    
@@ -170,6 +173,8 @@ lis.addEventListener("touchstart",(e)=>{
   // console.log(e)
   console.log('Touch Start')
   startX = Math.floor(e.touches[0].clientX)
+  document.body.style.overflow = "hidden"
+  moveBox.style.transition =""
 
 })
 
@@ -179,6 +184,9 @@ lis.addEventListener("touchend",(e)=>{
   // console.log(e.changedTouches[0].clientX) 
   endX = Math.floor(e.changedTouches[0].clientX)
   swipeInfo()
+  document.body.style.overflow = ""
+  moveBox.style.transition ="all 0.3s"
+  moveBox.style.transform =`translate(150px, 170px)` //start position
 })
 
 function swipeInfo(){
