@@ -348,10 +348,10 @@ class TouchGallery {
     <div class="glrT">
         <div class="glrT__body">  
             <div class="glrT__content">
-                <div class="glrT__desc">Descripstion</div>
-                <div class="glrT__imageContent">
-                </div>
+                <div class="glrT__imageContent"></div>
+                
                 <div class="glrT__counter">Counter</div>
+                <div class="glrT__desc">Descripstion</div>
             </div>          
       </div>
     </div>`
@@ -360,15 +360,25 @@ class TouchGallery {
 
   renderImg(){
     let offsetX = parseInt(`-${this.width}`)
+
     for(let i=0; i<3; i++){
-      if(i === 0){ document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${this.iArray[this.lenghtArr-1].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
-      offsetX += this.width 
-    } else {
-        document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${this.iArray[i-1].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
+        this.glrTForward()
+        document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
         offsetX += this.width
-      }
-      
     }
+
+
+
+
+    // for(let i=0; i<3; i++){
+    //   if(i === 0){ document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${this.iArray[this.lenghtArr-1].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
+    //   offsetX += this.width 
+    // } else {
+    //     document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${this.iArray[i-1].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
+    //     offsetX += this.width
+    //   }
+      
+    // }  -смещает на одну позицию
 
 
     // this.iArray.forEach(item=>{
@@ -394,7 +404,7 @@ class TouchGallery {
         this.moveAllBoxes(-300,0)
         this.removeBox(true)
         this.addBox(true)
-        this.glrTBackward()
+        this.glrTForward()
         this.glrTCounter()
         
         
@@ -404,7 +414,7 @@ class TouchGallery {
         this.moveAllBoxes(300,0)
         this.removeBox(false)
         this.addBox(false) 
-        this.glrTForward()
+        this.glrTBackward()
         this.glrTCounter()
        
   
@@ -447,8 +457,12 @@ class TouchGallery {
 
   addBox(first){
     if(first){
+      this.glrTForward()
       document.querySelector(`${this.target} .glrT__imageContent`).insertAdjacentHTML('beforeend', `<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px" class="glrT__imageItem">Image</div>`)
       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.transform = `translate(${this.width}px, 0px)`
+      this.glrTBackward()
+    
+      
     } else {
       document.querySelector(`${this.target} .glrT__imageContent`).insertAdjacentHTML('afterbegin', `<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px" class="glrT__imageItem">Image</div>`)
       document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.transform = `translate(${-this.width}px, 0px)`
