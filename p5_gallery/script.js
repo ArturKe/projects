@@ -3,8 +3,7 @@
 const glrImg =[
     {link:'./img/g4haiwkwu7jqrhh65c804phjt-q.jpeg' },
     {link:'./img/mothman-frank-frazetta.jpg' },
-    {link:'./img/The-Art-of-Frank-Frazetta-9.jpeg' },
-    {link:'./img/mothman-frank-frazetta.jpg' }
+    {link:'./img/The-Art-of-Frank-Frazetta-9.jpeg' }
   ]
   let curentStep = 0
   
@@ -302,10 +301,14 @@ class TouchGallery {
     this.width = width;
     this.height = height;
     this.target = target;
+    this.startX = 0;
+    this.endX = 0;
+    this.curentStep = 0;
+
     this.init();
     this.renderImg();
-    this.startX=0
-    this.imgContent = document.querySelector('.glrT__imageContent') 
+
+    this.imgContent = document.querySelector(`${this.target} .glrT__imageContent`) 
     this.imgContent.addEventListener("touchmove",(e)=>{
       console.log('Mooooove')
       
@@ -317,16 +320,23 @@ class TouchGallery {
     this.imgContent.addEventListener("touchstart",(e)=>{
       this.startX = Math.floor(e.touches[0].clientX)
       document.body.style.overflow = "hidden"
+      this.allBoxesStyle(false)
 
     })
 
     this.imgContent.addEventListener("touchend",(e)=>{
-      this.moveAllBoxes(0,0)
+      this.endX = Math.floor(e.changedTouches[0].clientX)
+      // this.moveAllBoxes(0,0)
+      this.allBoxesStyle(true)
+      this.swipeInfo()
       document.body.style.overflow = ""
 
     })
     this.imgContent.addEventListener("mouseup",(e)=>{
-      this.moveAllBoxes(0,0)
+      this.endX = Math.floor(e.changedTouches[0].clientX)
+      // this.moveAllBoxes(0,0)
+      this.allBoxesStyle(true)
+      this.swipeInfo()
       document.body.style.overflow = ""
 
     })
@@ -338,26 +348,37 @@ class TouchGallery {
     <div class="glrT">
         <div class="glrT__body">  
             <div class="glrT__content">
-                <div class="glrT__desc">Desc</div>
+                <div class="glrT__desc">Descripstion</div>
                 <div class="glrT__imageContent">
                 </div>
                 <div class="glrT__counter">Counter</div>
             </div>          
       </div>
     </div>`
+    this.glrTCounter()
   }
 
   renderImg(){
-    console.log(this.lenghtArr)
     let offsetX = parseInt(`-${this.width}`)
-    this.iArray.forEach(item=>{
-      document.querySelector('.glrT__imageContent').innerHTML+=`<div style="background:url('${item.link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
-      offsetX += this.width
-    })
-  }
+    for(let i=0; i<3; i++){
+      if(i === 0){ document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${this.iArray[this.lenghtArr-1].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
+      offsetX += this.width 
+    } else {
+        document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${this.iArray[i-1].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
+        offsetX += this.width
+      }
+      
+    }
+
+
+    // this.iArray.forEach(item=>{
+    //   document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${item.link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
+    //   offsetX += this.width
+    // })
+  } //Выводит первые 3 изображения из массива
 
   moveAllBoxes(positionX,startTouch){
-    const allImg = document.querySelectorAll('.glrT__imageItem')
+    const allImg = document.querySelectorAll(`${this.target} .glrT__imageItem`)
     let offsetPosX = 0
     allImg.forEach(item=>{
       item.style.transform =`translate(${positionX - this.width + offsetPosX - startTouch}px, 0px)`
@@ -365,10 +386,102 @@ class TouchGallery {
     }) 
   } // двигает все боксы относительно их начала кооринат
 
+  swipeInfo(){
+  let state
+  if(Math.abs(this.startX-this.endX) >= 80){
+      if(this.startX > this.endX){
+        console.log("<<<<")
+        this.moveAllBoxes(-300,0)
+        this.removeBox(true)
+        this.addBox(true)
+        this.glrTBackward()
+        this.glrTCounter()
+        
+        
+        
+      } else {
+        console.log(">>>>")
+        this.moveAllBoxes(300,0)
+        this.removeBox(false)
+        this.addBox(false) 
+        this.glrTForward()
+        this.glrTCounter()
+       
+  
+      }
+    } else { 
+      console.log("Stay")
+      this.moveAllBoxes(0,0)
+      }
+      // document.querySelector('.listener_info').innerHTML +=`<div>Direction: ${state} ${Math.abs(startX-endX)} </div>`  
+  } //-----------------------------------------------------------------------------------------------------------------------------Swipe
+
+  allBoxesStyle(state){
+    if(state){
+      document.querySelectorAll(`${this.target} .glrT__imageItem`).forEach(item=>{
+        item.style.transition ="all 0.3s"
+      })
+    } else {
+      document.querySelectorAll(`${this.target} .glrT__imageItem`).forEach(item=>{
+        item.style.transition =""
+      })
+    }
+  } //добавляет и убирает свойство транзишн
+  
+  glrTCounter(){
+    document.querySelector(`${this.target} .glrT__counter`).innerHTML =`<div class="glrT__counterContent"> ${this.curentStep+1}/${this.lenghtArr} </div>`
+  } //Обрабатывае значение счетчика
+
+  removeBox(first){
+    // const lChild = document.querySelector(target).lastChild
+    let lChild 
+    if(first){
+      lChild= document.querySelectorAll(`${this.target} .glrT__imageItem`)[0]
+    } else {
+      lChild= document.querySelectorAll(`${this.target} .glrT__imageItem`)[2]
+    }
+    console.log(lChild)
+    // lChild.style.background="green"
+    document.querySelector(`${this.target} .glrT__imageContent`).removeChild(lChild)
+  } //Удаляет первый или последний элемент
+
+  addBox(first){
+    if(first){
+      document.querySelector(`${this.target} .glrT__imageContent`).insertAdjacentHTML('beforeend', `<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px" class="glrT__imageItem">Image</div>`)
+      document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.transform = `translate(${this.width}px, 0px)`
+    } else {
+      document.querySelector(`${this.target} .glrT__imageContent`).insertAdjacentHTML('afterbegin', `<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px" class="glrT__imageItem">Image</div>`)
+      document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.transform = `translate(${-this.width}px, 0px)`
+    }
+
+  }  //добавляет один блок
+
+  //--------------------------------------------------------------------------------------
+
+  glrTForward(){
+    if (this.curentStep >= (this.lenghtArr-1)){
+      this.curentStep = 0
+    } else { 
+      this.curentStep++
+    } 
+    
+  } //Обрабатывае событие вперед
+  
+  glrTBackward(){
+    if (this.curentStep == 0){
+      this.curentStep = this.lenghtArr-1
+    } else { 
+      this.curentStep--
+      }
+    
+  } //Обрабатывае событие назад
+
 
 
 }
 
 const a = new TouchGallery('.glwrap', glrImg);
+const b = new TouchGallery('.glwrap2', glrImg);
+
 
   
