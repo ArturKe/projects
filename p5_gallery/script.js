@@ -1,15 +1,13 @@
 //--------------------------TapGallery----
 
 const glrImg =[
-    {link:'./img/g4haiwkwu7jqrhh65c804phjt-q.jpeg', desc:"Image 1" },
-    {link:'./img/mothman-frank-frazetta.jpg', desc:"Motman by Frank Frazetta" },
-    {link:'./img/The-Art-of-Frank-Frazetta-9.jpeg', desc:"Image 3" },
-    {link:'./img/StudioLightTest_21.jpg', desc:"Red sphere" }
+    {link:'./img/g4haiwkwu7jqrhh65c804phjt-q.jpeg', desc:"Image 1 Kabanchiki" },
+    {link:'./img/mothman-frank-frazetta.jpg', desc:'Image 2 "Motman" by Frank Frazetta' },
+    {link:'./img/The-Art-of-Frank-Frazetta-9.jpeg', desc:"Image 3 Frank Frazetta" },
+    {link:'./img/StudioLightTest_21.jpg', desc:"Image 4 Red sphere" }
     
   ]
   let curentStep = 0
-  
-  
   const glr = document.querySelector('.gallery__item')
   const counter = document.querySelector('.gallery__counter')
   glr.addEventListener('click', glrAction)
@@ -153,7 +151,6 @@ class TouchGallery {
         <div class="glrT__body">  
             <div class="glrT__content">
                 <div class="glrT__imageContent"></div>
-                
                 <div class="glrT__counter">Counter</div>
                 <div class="glrT__desc">Descripstion</div>
             </div>          
@@ -164,12 +161,15 @@ class TouchGallery {
 
   renderImg(){
     let offsetX = parseInt(`-${this.width}`)
+    this.glrTBackward()
 
     for(let i=0; i<3; i++){
-        this.glrTForward()
         document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem"></div>`
         offsetX += this.width
+        this.glrTForward()
     }
+    this.glrTBackward()
+    this.glrTBackward()
     this.glrTCheckUpdate()
     this.glrTDescUpdate()
 
@@ -208,9 +208,11 @@ class TouchGallery {
       if(this.startX > this.endX){
         console.log("<<<<")
         this.moveAllBoxes(-this.width,0)
+        this.glrTForward()
+
         this.removeBox(true)
         this.addBox(true)
-        this.glrTForward()
+        
         this.glrTCheckUpdate()
         this.glrTDescUpdate()
         
@@ -219,9 +221,11 @@ class TouchGallery {
       } else {
         console.log(">>>>")
         this.moveAllBoxes(this.width,0)
+        this.glrTBackward()
+
         this.removeBox(false)
         this.addBox(false) 
-        this.glrTBackward()
+        
         this.glrTCheckUpdate()
         this.glrTDescUpdate()
        
@@ -264,14 +268,16 @@ class TouchGallery {
   addBox(first){
     if(first){
       this.glrTForward()
-      document.querySelector(`${this.target} .glrT__imageContent`).insertAdjacentHTML('beforeend', `<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px" class="glrT__imageItem">Image</div>`)
+      document.querySelector(`${this.target} .glrT__imageContent`).insertAdjacentHTML('beforeend', `<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px" class="glrT__imageItem"></div>`)
       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.transform = `translate(${this.width}px, 0px)`
       this.glrTBackward()
     
       
     } else {
-      document.querySelector(`${this.target} .glrT__imageContent`).insertAdjacentHTML('afterbegin', `<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px" class="glrT__imageItem">Image</div>`)
+      this.glrTBackward()
+      document.querySelector(`${this.target} .glrT__imageContent`).insertAdjacentHTML('afterbegin', `<div style="background:url('${this.iArray[this.curentStep].link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px" class="glrT__imageItem"></div>`)
       document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.transform = `translate(${-this.width}px, 0px)`
+      this.glrTForward()
     }
 
   }  //добавляет один блок
