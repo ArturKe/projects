@@ -111,37 +111,7 @@ class TouchGallery {
 
     this.init();
     this.renderImg();
-
-    this.imgContent = document.querySelector(`${this.target} .glrT__imageContent`) 
-    this.imgContent.addEventListener("touchmove",(e)=>{
-      // console.log('Mooooove')
-      
-      this.curentPosX = Math.floor(e.touches[0].clientX)
-      // console.log(this.startX)
-      this.moveAllBoxes(this.curentPosX,this.startX)
-    })
-
-    this.imgContent.addEventListener("touchstart",(e)=>{
-      this.startX = Math.floor(e.touches[0].clientX)
-      document.body.style.overflow = "hidden"
-      this.allBoxesStyle(false)
-
-    })
-
-    this.imgContent.addEventListener("touchend",(e)=>{
-      this.endX = Math.floor(e.changedTouches[0].clientX)
-      this.allBoxesStyle(true)
-      this.swipeInfo()
-      document.body.style.overflow = ""
-
-    })
-    this.imgContent.addEventListener("mouseup",(e)=>{
-      this.endX = Math.floor(e.changedTouches[0].clientX)
-      this.allBoxesStyle(true)
-      this.swipeInfo()
-      document.body.style.overflow = ""
-
-    })
+    this.eventBind();
 
   }
 
@@ -155,9 +125,12 @@ class TouchGallery {
                 <div class="glrT__desc">Descripstion</div>
             </div>          
       </div>
-    </div>`
+    </div>` 
+    document.querySelector(`${this.target} .glrT__imageContent`).style.width =`${this.width}px`
+    document.querySelector(`${this.target} .glrT__imageContent`).style.height =`${this.height}px`
+    document.querySelector(`${this.target} .glrT__desc`).style.width =`${this.width}px`
     this.glrTCheckLength()
-  }
+  } // Отрисовка шаблона
 
   renderImg(){
     let offsetX = parseInt(`-${this.width}`)
@@ -191,7 +164,41 @@ class TouchGallery {
     //   document.querySelector(`${this.target} .glrT__imageContent`).innerHTML+=`<div style="background:url('${item.link}') center/cover no-repeat; width:${this.width}px; height:${this.height}px; transform:translateX(${offsetX}px)" class="glrT__imageItem">Image</div>`
     //   offsetX += this.width
     // })
-  } //Выводит первые 3 изображения из массива
+  } //Создает 3 блока в шаблоне и выводит в них первые 3 изображения из массива 
+
+  eventBind(){
+    this.imgContent = document.querySelector(`${this.target} .glrT__imageContent`) 
+    this.imgContent.addEventListener("touchmove",(e)=>{
+      // console.log('Mooooove')
+      
+      this.curentPosX = Math.floor(e.touches[0].clientX)
+      // console.log(this.startX)
+      this.moveAllBoxes(this.curentPosX,this.startX)
+    })
+
+    this.imgContent.addEventListener("touchstart",(e)=>{
+      this.startX = Math.floor(e.touches[0].clientX)
+      document.body.style.overflow = "hidden"
+      this.allBoxesStyle(false)
+
+    })
+
+    this.imgContent.addEventListener("touchend",(e)=>{
+      this.endX = Math.floor(e.changedTouches[0].clientX)
+      this.allBoxesStyle(true)
+      this.swipeInfo()
+      document.body.style.overflow = ""
+
+    })
+    this.imgContent.addEventListener("mouseup",(e)=>{
+      this.endX = Math.floor(e.changedTouches[0].clientX)
+      this.allBoxesStyle(true)
+      this.swipeInfo()
+      document.body.style.overflow = ""
+
+    })
+
+  } // Добавляет слушатели на разные элементы
 
   moveAllBoxes(positionX,startTouch){
     const allImg = document.querySelectorAll(`${this.target} .glrT__imageItem`)
@@ -235,7 +242,6 @@ class TouchGallery {
       console.log("Stay")
       this.moveAllBoxes(0,0)
       }
-      // document.querySelector('.listener_info').innerHTML +=`<div>Direction: ${state} ${Math.abs(startX-endX)} </div>`  
   } //-----------------------------------------------------------------------------------------------------------------------------Swipe
 
   allBoxesStyle(state){
@@ -280,7 +286,7 @@ class TouchGallery {
       this.glrTForward()
     }
 
-  }  //добавляет один блок
+  }  //добавляет один блок в начало или конец списка в зависимости условия
 
   //--------------------------------------------------------------------------------------
 
@@ -351,7 +357,8 @@ class TouchGallery {
 }
 
 const a = new TouchGallery('.glwrap', glrImg);
-const b = new TouchGallery('.glwrap2', glrImg);
+const b = new TouchGallery('.glwrap2', glrImg,350,200);
+const c = new TouchGallery('.glwrap3', glrImg,150,150);
 
 
 //---------------------------------------------------------TestInfo
