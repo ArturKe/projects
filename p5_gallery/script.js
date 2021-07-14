@@ -109,6 +109,7 @@ class TouchGallery {
     this.endX = 0;
     this.curentStep = 0;
     this.touchStart = false;
+    this.multiTouch = false;
 
     this.init();
     this.renderImg();
@@ -180,10 +181,9 @@ class TouchGallery {
      
       // console.log(this.startX)
       // console.log(e.touches.length) //------------------------------------
-      console.log(e)
+      // console.log(e)
       //---------------------------------------------------------------------
       if(e.touches.length >= 2){
-        e.stopPropagation()
         this.curentPosXtouch2 = Math.floor(e.touches[1].clientX)
         this.scalePicture()
       } else {
@@ -199,6 +199,9 @@ class TouchGallery {
       document.body.style.overflow = "hidden"
       this.allBoxesStyle(false)
       this.touchStart = true
+      if(e.touches.length >= 2){
+        this.multiTouch = true
+      }
 
     })
 
@@ -208,23 +211,23 @@ class TouchGallery {
       this.swipeInfo()
       document.body.style.overflow = ""
       this.touchStart = false
-     
-
-      
+      this.multiTouch = false
+      this.scalePictureReset()
 
     })
+
     this.imgContent.addEventListener("mouseup",(e)=>{
       // this.endX = Math.floor(e.changedTouches[0].clientX)
       // console.log(e)
       let MouseEndX = Math.floor(e.layerX)
-      console.log(this.endX)
+      // console.log(this.endX)
       
 
-      if((MouseEndX <= this.width/2) && !this.touchStart){
+      if((MouseEndX <= this.width/2) && !this.touchStart && !this.multiTouch){
         this.actionMoveForward()
       } 
       
-      if((MouseEndX >= this.width/2) && !this.touchStart){
+      if((MouseEndX >= this.width/2) && !this.touchStart && !this.multiTouch){
         this.actionMoveBackward()
       }
 
@@ -236,10 +239,21 @@ class TouchGallery {
 
   } // Добавляет слушатели на разные элементы
 
-  scalePicture(){
-    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.background="red"
+  scalePicture(x1,x2){
+    // document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.background="red"
+    let scale = remap((x2-x1),30,250,1,3)
+    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.scale=`${scale}px`
     
 
+  }
+  scalePictureReset(){
+    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.scale="1"
+
+  }
+
+  remap (value, r0, r1, r2, r3) {
+    var mag = Math.abs(value - r0), sgn = value < 0 ? -1 : 1;
+    return sgn * mag * (r3 - r2) / (r1 - r0);
   }
 
   moveAllBoxes(positionX,startTouch){
@@ -257,12 +271,8 @@ class TouchGallery {
       if(this.startX > this.endX){
         this.actionMoveBackward()
         
-        
-        
       } else {
         this.actionMoveForward()
-       
-  
       }
     } else { 
       console.log("Stay")
