@@ -181,6 +181,7 @@ class TouchGallery {
       // console.log(e)
       //---------------------------------------------------------------------
       if(e.touches.length >= 2){
+        e.stopPropagation()
         this.curentPosXtouch2 = Math.floor(e.touches[1].clientX)
         this.scalePicture()
       } else {
@@ -209,7 +210,22 @@ class TouchGallery {
 
     })
     this.imgContent.addEventListener("mouseup",(e)=>{
-      this.endX = Math.floor(e.changedTouches[0].clientX)
+      // this.endX = Math.floor(e.changedTouches[0].clientX)
+      // console.log(e)
+      let MouseEndX = Math.floor(e.layerX)
+      console.log(this.endX)
+      
+
+      if(MouseEndX <= this.width/2){
+        this.actionMoveBackward()
+        console.log('Move Backward')
+      } 
+      
+      if(MouseEndX >= this.width/2){
+        this.actionMoveForward()
+        console.log('Move Forvard')
+      }
+
       this.allBoxesStyle(true)
       this.swipeInfo()
       document.body.style.overflow = ""
@@ -219,7 +235,8 @@ class TouchGallery {
   } // Добавляет слушатели на разные элементы
 
   scalePicture(){
-    this.target.style.background="red"
+    document.querySelector(`${this.target} .glrT__imageItem`).style.background="red"
+    
 
   }
 
@@ -236,28 +253,12 @@ class TouchGallery {
   let state
   if(Math.abs(this.startX-this.endX) >= 80){
       if(this.startX > this.endX){
-        console.log("<<<<")
-        this.moveAllBoxes(-this.width,0)
-        this.glrTForward()
-
-        this.removeBox(true)
-        this.addBox(true)
-        
-        this.glrTCheckUpdate()
-        this.glrTDescUpdate()
+        this.actionMoveBackward()
         
         
         
       } else {
-        console.log(">>>>")
-        this.moveAllBoxes(this.width,0)
-        this.glrTBackward()
-
-        this.removeBox(false)
-        this.addBox(false) 
-        
-        this.glrTCheckUpdate()
-        this.glrTDescUpdate()
+        this.actionMoveForward()
        
   
       }
@@ -266,6 +267,31 @@ class TouchGallery {
       this.moveAllBoxes(0,0)
       }
   } //-----------------------------------------------------------------------------------------------------------------------------Swipe
+
+  actionMoveBackward(){
+    console.log("<<<<")
+        this.moveAllBoxes(-this.width,0)
+        this.glrTForward()
+
+        this.removeBox(true)
+        this.addBox(true)
+        
+        this.glrTCheckUpdate()
+        this.glrTDescUpdate()
+  }
+
+  actionMoveForward(){
+    console.log(">>>>")
+    this.moveAllBoxes(this.width,0)
+    this.glrTBackward()
+
+    this.removeBox(false)
+    this.addBox(false) 
+    
+    this.glrTCheckUpdate()
+    this.glrTDescUpdate()
+
+  }
 
   allBoxesStyle(state){
     if(state){
