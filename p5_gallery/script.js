@@ -185,7 +185,7 @@ class TouchGallery {
       //---------------------------------------------------------------------
       if(e.touches.length >= 2){
         this.curentPosXtouch2 = Math.floor(e.touches[1].clientX)
-        this.scalePicture()
+        this.scalePicture(this.curentPosX,this.curentPosXtouch2)
       } else {
         this.moveAllBoxes(this.curentPosX,this.startX)
       }
