@@ -436,6 +436,7 @@ testBox.addEventListener('touchend',(e)=>{setTouchState(false)
 
 function moveFunc(e){
   console.log(e)
+  e.preventDefault()
   testBox.innerHTML=""
   testBox.innerHTML= `<div>${e.target}</div>
   <div>${e.touches.length}</div>
@@ -443,9 +444,12 @@ function moveFunc(e){
   <div>Touch start: ${touchStart}</div>
   `
   if(e.touches.length >= 2){
-    e.touches.forEach((item,index)=>{
-      testBox.innerHTML+= `<div>Touch:${index} ClientX: ${Math.floor(item.clientX)}</div>`
-    })
+    for(let i=0; i < e.touches.length; i++){
+      testBox.innerHTML+= `<div>Touch:${i} ClientX: ${Math.floor(e.touches[i].clientX)}</div>`
+    }
+    // e.touches.forEach((item) => {
+    //   testBox.innerHTML+= `<div>Touch:${index} ClientX: ${Math.floor(item.clientX)}</div>`
+    // })
   } else {
     testBox.innerHTML+= `<div>CleintX: ${Math.floor(e.touches[0].clientX)} CleintY: ${Math.floor(e.touches[0].clientY)}</div>`
   }
