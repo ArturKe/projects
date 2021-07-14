@@ -240,9 +240,9 @@ class TouchGallery {
   } // Добавляет слушатели на разные элементы
 
   scalePicture(x1,x2){
-    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.background="red"
+    // document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.background="red"
     let scale = remap((x2-x1),30,250,1,3)
-    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.scale=`${scale}px`
+    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform=`scale(${scale})`
     
 
   }
