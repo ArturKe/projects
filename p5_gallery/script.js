@@ -172,8 +172,19 @@ class TouchGallery {
       // console.log('Mooooove')
       
       this.curentPosX = Math.floor(e.touches[0].clientX)
+      this.curentPosXtouch2 = Math.floor(e.touches[1].clientX)
       // console.log(this.startX)
-      this.moveAllBoxes(this.curentPosX,this.startX)
+      // console.log(e.touches.length) //------------------------------------
+      // console.log(e)
+      //---------------------------------------------------------------------
+      if(e.touches.length >= 2){
+        this.scalePicture()
+      } else {
+        this.moveAllBoxes(this.curentPosX,this.startX)
+      }
+
+
+      
     })
 
     this.imgContent.addEventListener("touchstart",(e)=>{
@@ -188,6 +199,9 @@ class TouchGallery {
       this.allBoxesStyle(true)
       this.swipeInfo()
       document.body.style.overflow = ""
+     
+
+      
 
     })
     this.imgContent.addEventListener("mouseup",(e)=>{
@@ -199,6 +213,11 @@ class TouchGallery {
     })
 
   } // Добавляет слушатели на разные элементы
+
+  scalePicture(){
+    e.target.style.background="red"
+
+  }
 
   moveAllBoxes(positionX,startTouch){
     const allImg = document.querySelectorAll(`${this.target} .glrT__imageItem`)
