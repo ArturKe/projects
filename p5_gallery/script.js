@@ -170,6 +170,7 @@ class TouchGallery {
     this.imgContent = document.querySelector(`${this.target} .glrT__imageContent`) 
     this.imgContent.addEventListener("touchmove",(e)=>{
       // console.log('Mooooove')
+      e.preventDefault()
       e.stopPropagation()
      
       
@@ -178,7 +179,7 @@ class TouchGallery {
      
       // console.log(this.startX)
       // console.log(e.touches.length) //------------------------------------
-      // console.log(e)
+      console.log(e)
       //---------------------------------------------------------------------
       if(e.touches.length >= 2){
         e.stopPropagation()
@@ -217,13 +218,11 @@ class TouchGallery {
       
 
       if(MouseEndX <= this.width/2){
-        this.actionMoveBackward()
-        console.log('Move Backward')
+        this.actionMoveForward()
       } 
       
       if(MouseEndX >= this.width/2){
-        this.actionMoveForward()
-        console.log('Move Forvard')
+        this.actionMoveBackward()
       }
 
       this.allBoxesStyle(true)
@@ -235,7 +234,7 @@ class TouchGallery {
   } // Добавляет слушатели на разные элементы
 
   scalePicture(){
-    document.querySelector(`${this.target} .glrT__imageItem`).style.background="red"
+    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.background="red"
     
 
   }
