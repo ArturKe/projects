@@ -108,6 +108,7 @@ class TouchGallery {
     this.startX = 0;
     this.endX = 0;
     this.curentStep = 0;
+    this.touchStart = false;
 
     this.init();
     this.renderImg();
@@ -197,6 +198,7 @@ class TouchGallery {
       this.startX = Math.floor(e.touches[0].clientX)
       document.body.style.overflow = "hidden"
       this.allBoxesStyle(false)
+      this.touchStart = true
 
     })
 
@@ -205,6 +207,7 @@ class TouchGallery {
       this.allBoxesStyle(true)
       this.swipeInfo()
       document.body.style.overflow = ""
+      this.touchStart = false
      
 
       
@@ -217,11 +220,11 @@ class TouchGallery {
       console.log(this.endX)
       
 
-      if(MouseEndX <= this.width/2){
+      if((MouseEndX <= this.width/2) && !this.touchStart){
         this.actionMoveForward()
       } 
       
-      if(MouseEndX >= this.width/2){
+      if((MouseEndX >= this.width/2) && !this.touchStart){
         this.actionMoveBackward()
       }
 
