@@ -170,14 +170,18 @@ class TouchGallery {
     this.imgContent = document.querySelector(`${this.target} .glrT__imageContent`) 
     this.imgContent.addEventListener("touchmove",(e)=>{
       // console.log('Mooooove')
+      e.stopPropagation()
+     
       
       this.curentPosX = Math.floor(e.touches[0].clientX)
-      this.curentPosXtouch2 = Math.floor(e.touches[1].clientX)
+     
+     
       // console.log(this.startX)
       // console.log(e.touches.length) //------------------------------------
       // console.log(e)
       //---------------------------------------------------------------------
       if(e.touches.length >= 2){
+        this.curentPosXtouch2 = Math.floor(e.touches[1].clientX)
         this.scalePicture()
       } else {
         this.moveAllBoxes(this.curentPosX,this.startX)
@@ -215,7 +219,7 @@ class TouchGallery {
   } // Добавляет слушатели на разные элементы
 
   scalePicture(){
-    e.target.style.background="red"
+    this.target.style.background="red"
 
   }
 
