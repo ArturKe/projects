@@ -439,19 +439,22 @@ function moveFunc(e){
   e.preventDefault()
   testBox.innerHTML=""
   testBox.innerHTML= `<div>${e.target}</div>
-  <div>${e.touches.length}</div>
+  <div>Touches length:${e.touches.length}</div>
+  <div>Changed Touches Length: ${e.changedTouches.length}</div>
   <div>${e.type}</div>
   <div>Touch start: ${touchStart}</div>
+  <div>Changed CleintX:${Math.floor(e.changedTouches[0].clientX)} CleintY: ${Math.floor(e.changedTouches[0].clientY)}</div>
   `
   if(e.touches.length >= 2){
     for(let i=0; i < e.touches.length; i++){
-      testBox.innerHTML+= `<div>Touch:${i} ClientX: ${Math.floor(e.touches[i].clientX)}</div>`
+      testBox.innerHTML+= `<div>Touch:${i} ClientX: ${Math.floor(e.touches[i].clientX)} ClientY: ${Math.floor(e.touches[i].clientY)}</div>`
     }
     // e.touches.forEach((item) => {
     //   testBox.innerHTML+= `<div>Touch:${index} ClientX: ${Math.floor(item.clientX)}</div>`
     // })
   } else {
-    testBox.innerHTML+= `<div>CleintX: ${Math.floor(e.touches[0].clientX)} CleintY: ${Math.floor(e.touches[0].clientY)}</div>`
+    testBox.innerHTML+= `<div>CleintX: ${Math.floor(e.touches[0].clientX)} CleintY: ${Math.floor(e.touches[0].clientY)}</div>
+    `
   }
 
 }
