@@ -424,3 +424,39 @@ const c = new TouchGallery('.glwrap3', glrImg,150,150);
 
 
 //---------------------------------------------------------TestInfo
+const testBox = document.querySelector('.test_box')
+let touchStart = false
+testBox.addEventListener('touchmove',moveFunc)
+testBox.addEventListener('touchstart',(e)=>{setTouchState(true)
+  moveFunc(e)
+})
+testBox.addEventListener('touchend',(e)=>{setTouchState(false)
+ moveFunc(e)
+})
+
+function moveFunc(e){
+  console.log(e)
+  testBox.innerHTML=""
+  testBox.innerHTML= `<div>${e.target}</div>
+  <div>${e.touches.length}</div>
+  <div>${e.type}</div>
+  <div>Touch start: ${touchStart}</div>
+  `
+  if(e.touches.length >= 2){
+    e.touches.forEach((item,index)=>{
+      testBox.innerHTML+= `<div>Touch:${index} ClientX: ${Math.floor(item.clientX)}</div>`
+    })
+  } else {
+    testBox.innerHTML+= `<div>CleintX: ${Math.floor(e.touches[0].clientX)} CleintY: ${Math.floor(e.touches[0].clientY)}</div>`
+  }
+
+}
+function setTouchState(value){
+  if (value){
+    touchStart = true; 
+  } else {
+    touchStart = false;
+  }
+ 
+
+}
