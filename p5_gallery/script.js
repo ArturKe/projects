@@ -424,46 +424,122 @@ const c = new TouchGallery('.glwrap3', glrImg,150,150);
 
 
 //---------------------------------------------------------TestInfo
-const testBox = document.querySelector('.test_box')
 let touchStart = false
-testBox.addEventListener('touchmove',moveFunc)
-testBox.addEventListener('touchstart',(e)=>{setTouchState(true)
-  moveFunc(e)
-})
-testBox.addEventListener('touchend',(e)=>{setTouchState(false)
- moveFunc(e)
-})
+let isTouched = false
+let isMultitouched = false
+// const bumBox = document.querySelector('.test_box')
+// console.log(bumBox.children.length)
+// console.log(bumBox.childNodes)
 
-function moveFunc(e){
-  console.log(e)
+
+function binding(target){
+  const testBox = document.querySelector(target)
+
+  testBox.addEventListener('touchmove',(e)=>{updateTouchState(e,testBox)})
+  testBox.addEventListener('touchstart',(e)=>{
+    setTouchState(true)
+    updateTouchState(e,testBox)
+  })
+  testBox.addEventListener('touchend',(e)=>{
+    setTouchState(false)
+    updateTouchState(e,testBox)
+  })
+}
+binding('.test_box')
+
+function updateTouchState(e,$target){
+  // console.log(e)
+  e.stopPropagation()
   e.preventDefault()
-  testBox.innerHTML=""
-  testBox.innerHTML= `<div>${e.target}</div>
+  // console.log($target)
+
+  if(e.touches.length > 0){
+    isTouched = true
+  } else {isTouched = false}
+
+  if(e.touches.length >= 2){
+    isMultitouched = true
+  } else {
+    isMultitouched = false
+  }
+  
+  
+  $target.innerHTML=""
+  $target.innerHTML= `<div>${e.target}</div>
   <div>Touches length:${e.touches.length}</div>
   <div>Changed Touches Length: ${e.changedTouches.length}</div>
   <div>${e.type}</div>
   <div>Touch start: ${touchStart}</div>
+  <div>Touched: ${isTouched}</div>
+  <div>MultiTouch: ${isMultitouched}</div>
   <div>Changed CleintX:${Math.floor(e.changedTouches[0].clientX)} CleintY: ${Math.floor(e.changedTouches[0].clientY)}</div>
   `
-  if(e.touches.length >= 2){
+
+  if(isMultitouched){
     for(let i=0; i < e.touches.length; i++){
-      testBox.innerHTML+= `<div>Touch:${i} ClientX: ${Math.floor(e.touches[i].clientX)} ClientY: ${Math.floor(e.touches[i].clientY)}</div>`
+      $target.innerHTML+= `<div>Touch:${i} ClientX: ${Math.floor(e.touches[i].clientX)} ClientY: ${Math.floor(e.touches[i].clientY)}</div>`
     }
     // e.touches.forEach((item) => {
     //   testBox.innerHTML+= `<div>Touch:${index} ClientX: ${Math.floor(item.clientX)}</div>`
     // })
   } else {
-    testBox.innerHTML+= `<div>CleintX: ${Math.floor(e.touches[0].clientX)} CleintY: ${Math.floor(e.touches[0].clientY)}</div>
-    `
+    try{$target.innerHTML+= `<div>CleintX: ${Math.floor(e.touches[0].clientX)} CleintY: ${Math.floor(e.touches[0].clientY)}</div>`}
+    catch{console.log('oh oh')}
+
   }
 
 }
+
 function setTouchState(value){
   if (value){
     touchStart = true; 
   } else {
     touchStart = false;
   }
- 
 
 }
+
+//------------------------------old
+// const testBox = document.querySelector('.test_box')
+// let touchStart = false
+// testBox.addEventListener('touchmove',moveFunc)
+// testBox.addEventListener('touchstart',(e)=>{setTouchState(true)
+//   moveFunc(e)
+// })
+// testBox.addEventListener('touchend',(e)=>{setTouchState(false)
+//  moveFunc(e)
+// })
+
+// function moveFunc(e){
+//   console.log(e)
+//   e.preventDefault()
+//   testBox.innerHTML=""
+//   testBox.innerHTML= `<div>${e.target}</div>
+//   <div>Touches length:${e.touches.length}</div>
+//   <div>Changed Touches Length: ${e.changedTouches.length}</div>
+//   <div>${e.type}</div>
+//   <div>Touch start: ${touchStart}</div>
+//   <div>Changed CleintX:${Math.floor(e.changedTouches[0].clientX)} CleintY: ${Math.floor(e.changedTouches[0].clientY)}</div>
+//   `
+//   if(e.touches.length >= 2){
+//     for(let i=0; i < e.touches.length; i++){
+//       testBox.innerHTML+= `<div>Touch:${i} ClientX: ${Math.floor(e.touches[i].clientX)} ClientY: ${Math.floor(e.touches[i].clientY)}</div>`
+//     }
+//     // e.touches.forEach((item) => {
+//     //   testBox.innerHTML+= `<div>Touch:${index} ClientX: ${Math.floor(item.clientX)}</div>`
+//     // })
+//   } else {
+//     testBox.innerHTML+= `<div>CleintX: ${Math.floor(e.touches[0].clientX)} CleintY: ${Math.floor(e.touches[0].clientY)}</div>
+//     `
+//   }
+
+// }
+// function setTouchState(value){
+//   if (value){
+//     touchStart = true; 
+//   } else {
+//     touchStart = false;
+//   }
+ 
+
+// }
