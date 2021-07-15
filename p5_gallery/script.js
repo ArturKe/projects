@@ -428,8 +428,10 @@ let touchStart = false
 let isTouched = false
 let isMultitouched = false
 let vectorDistance = 0,
-  startVectorDdistance = 0
+  startVectorDistance = 0,
+  remapedDistance = 0
 let rem = createRemap(50,300,0,2)
+
 
 // const bumBox = document.querySelector('.test_box')
 // console.log(bumBox.children.length)
@@ -475,6 +477,11 @@ function updateTouchState(e,$target){
     vectorDistance = 0
   }
   
+  if(isMultitouched){
+    remapedDistance = (rem(vectorDistance))
+  } else {
+    remapedDistance = 0
+  }
   
   $target.innerHTML=""
   $target.innerHTML= `<div>${e.target}</div>
@@ -483,7 +490,7 @@ function updateTouchState(e,$target){
   <div>${e.type}</div>
   <div>Start Distance: ${startVectorDistance}</div>
   <div>Vector Distance: ${Math.floor(vectorDistance)}</div>
-  <div>Distance Remap: ${(rem(vectorDistance))}</div>
+  <div>Distance Remap: ${remapedDistance}</div>
   <div>Touch start: ${touchStart}</div>
   <div>Touched: ${isTouched}</div>
   <div>MultiTouch: ${isMultitouched}</div>
@@ -515,12 +522,12 @@ function setTouchState(value){
   if (value){
     touchStart = true; 
     if(isMultitouched){
-     startVectorDdistance = 2
+     startVectorDistance = 2
     }
   } else {
     touchStart = false;
     if(!isMultitouched){
-      startVectorDdistance = 0
+      startVectorDistance = 0
      }
   }
 
