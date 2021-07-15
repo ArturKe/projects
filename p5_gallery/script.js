@@ -427,6 +427,7 @@ const c = new TouchGallery('.glwrap3', glrImg,150,150);
 let touchStart = false
 let isTouched = false
 let isMultitouched = false
+let vectorDistance = 0
 // const bumBox = document.querySelector('.test_box')
 // console.log(bumBox.children.length)
 // console.log(bumBox.childNodes)
@@ -462,6 +463,14 @@ function updateTouchState(e,$target){
   } else {
     isMultitouched = false
   }
+
+  if(isMultitouched){
+    let a = e.touches[0].clientX - e.touches[1].clientX
+    let b = e.touches[0].clientY - e.touches[1].clientY
+    vectorDistance = Math.sqrt(a*a+b*b)
+  } else {
+    vectorDistance = 0
+  }
   
   
   $target.innerHTML=""
@@ -469,6 +478,7 @@ function updateTouchState(e,$target){
   <div>Touches length:${e.touches.length}</div>
   <div>Changed Touches Length: ${e.changedTouches.length}</div>
   <div>${e.type}</div>
+  <div>Vector Distance: ${vectorDistance}</div>
   <div>Touch start: ${touchStart}</div>
   <div>Touched: ${isTouched}</div>
   <div>MultiTouch: ${isMultitouched}</div>
