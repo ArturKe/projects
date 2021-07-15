@@ -431,6 +431,7 @@ let vectorDistance = 0,
   startVectorDistance = 0,
   remapedDistance = 0
 let rem = createRemap(50,300,0,2)
+let zamok = false
 
 
 // const bumBox = document.querySelector('.test_box')
@@ -468,6 +469,17 @@ function updateTouchState(e,$target){
   } else {
     isMultitouched = false
   }
+
+  if(isMultitouched){
+    if(!zamok){
+      startVectorDistance =e.touches[0].clientX - e.touches[1].clientX
+      zamok = true
+    }
+  } else {
+    zamok = false
+    startVectorDistance = 0
+  } 
+
 
   if(isMultitouched){
     let a = e.touches[0].clientX - e.touches[1].clientX
@@ -521,14 +533,10 @@ function createRemap(inMin, inMax, outMin, outMax) {
 function setTouchState(value){
   if (value){
     touchStart = true; 
-    if(isMultitouched){
-     startVectorDistance = 2
-    }
+    
   } else {
     touchStart = false;
-    if(!isMultitouched){
-      startVectorDistance = 0
-     }
+   
   }
 
 }
