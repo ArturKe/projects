@@ -513,7 +513,7 @@ class TouchGalleryScale {
       this.touchStart = false
 
       this.scalePictureReset()
-      document.querySelector(`${this.target} .glrT__content`).style.overflow = "hidden"
+      document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = "hidden"
 
     })
 
@@ -568,8 +568,10 @@ class TouchGalleryScale {
   
     if(isMultitouched){
       if(!zamok){
-        document.querySelector(`${this.target} .glrT__content`).style.overflow = ""
-        startVectorDistance =e.touches[0].clientX - e.touches[1].clientX
+        document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
+        let a = e.touches[0].clientX - e.touches[1].clientX
+        let b = e.touches[0].clientY - e.touches[1].clientY
+        startVectorDistance = rem(Math.sqrt(a*a+b*b))
         zamok = true
       }
     } else {
@@ -583,32 +585,13 @@ class TouchGalleryScale {
       let b = e.touches[0].clientY - e.touches[1].clientY
       vectorDistance = Math.sqrt(a*a+b*b)
       remapedDistance = (rem(vectorDistance))
-      this.scalePicture(remapedDistance)
-      // document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px)`
+      // this.scalePicture(1+remapedDistance-startVectorDistance)
+       document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px) scale(${1+remapedDistance-startVectorDistance})`
     } else {
       vectorDistance = 0
       remapedDistance = 0
     }
     
-    // if(isMultitouched){
-    //   remapedDistance = (rem(vectorDistance))
-    // } else {
-    //   remapedDistance = 0
-    // }
-  
-    // if(isMultitouched){
-    //   for(let i=0; i < e.touches.length; i++){
-    //     this.imgContent.innerHTML+= `<div>Touch:${i} ClientX: ${Math.floor(e.touches[i].clientX)} ClientY: ${Math.floor(e.touches[i].clientY)}</div>`
-    //   }
-    //   // e.touches.forEach((item) => {
-    //   //   testBox.innerHTML+= `<div>Touch:${index} ClientX: ${Math.floor(item.clientX)}</div>`
-    //   // })
-    // } else {
-    //   try{this.imgContent.innerHTML+= `<div>CleintX: ${Math.floor(e.touches[0].clientX)} CleintY: ${Math.floor(e.touches[0].clientY)}</div>`}
-    //   catch{console.log('oh oh')}
-  
-    // }
-  
   }
 
 
