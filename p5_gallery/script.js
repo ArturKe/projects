@@ -604,6 +604,7 @@ class TouchGalleryScale {
       vectorDistance = Math.sqrt(a*a+b*b)
       remapedDistance = (rem(vectorDistance))
       // this.scalePicture(1+remapedDistance-startVectorDistance)
+      document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.transition =""
        document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
        document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px) scale(${1+remapedDistance-startVectorDistance})`
        document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.zIndex = '10' 
