@@ -583,6 +583,8 @@ class TouchGalleryScale {
       if(!zamok){
         this.moveAllBoxes(0,0)
         document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
+        document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.opacity = '0'
+       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.opacity = '0'
         let a = e.touches[0].clientX - e.touches[1].clientX
         let b = e.touches[0].clientY - e.touches[1].clientY
         startVectorDistance = rem(Math.sqrt(a*a+b*b))
@@ -591,6 +593,8 @@ class TouchGalleryScale {
     } else {
       zamok = false
       startVectorDistance = 0
+      document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.opacity = '1'
+       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.opacity = '1'
     } 
   
   
@@ -603,8 +607,7 @@ class TouchGalleryScale {
        document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
        document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px) scale(${1+remapedDistance-startVectorDistance})`
        document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.zIndex = '10'
-       document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.opacity = '0'
-       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.opacity = '0'
+       
       
     } else {
       vectorDistance = 0
