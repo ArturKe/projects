@@ -593,8 +593,7 @@ class TouchGalleryScale {
     } else {
       zamok = false
       startVectorDistance = 0
-      document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.opacity = '1'
-       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.opacity = '1'
+      
     } 
   
   
@@ -606,12 +605,13 @@ class TouchGalleryScale {
       // this.scalePicture(1+remapedDistance-startVectorDistance)
        document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
        document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px) scale(${1+remapedDistance-startVectorDistance})`
-       document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.zIndex = '10'
-       
+       document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.zIndex = '10' 
       
     } else {
       vectorDistance = 0
       remapedDistance = 0
+      document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.opacity = '1'
+       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.opacity = '1'
     }
     
   }
