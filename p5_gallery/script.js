@@ -500,8 +500,6 @@ class TouchGalleryScale {
       document.body.style.overflow = "hidden"
       this.allBoxesStyle(false)
       this.touchStart = true
-
-      
       
 
     })
@@ -521,6 +519,9 @@ class TouchGalleryScale {
       this.touchStart = false
 
       this.scalePictureReset()
+      
+      document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.transition ="all 0.3s"
+      
       document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = "hidden"
 
     })
@@ -611,7 +612,7 @@ class TouchGalleryScale {
       vectorDistance = 0
       remapedDistance = 0
       document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.opacity = '1'
-       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.opacity = '1'
+      document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.opacity = '1'
     }
     
   }
@@ -715,6 +716,8 @@ class TouchGalleryScale {
       })
     }
   } //добавляет и убирает свойство транзишн
+ 
+    
   
   
 
