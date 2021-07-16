@@ -513,7 +513,7 @@ class TouchGalleryScale {
       this.touchStart = false
 
       this.scalePictureReset()
-      document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = "hidden"
+      // document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = "hidden"
 
     })
 

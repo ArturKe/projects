@@ -128,7 +128,7 @@
     background-color: sandybrown;
     display: flex;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .glrT__imageItem{
     position: absolute;
