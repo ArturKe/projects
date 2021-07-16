@@ -427,6 +427,7 @@ class TouchGalleryScale {
     this.height = height;
     this.target = target;
     this.startX = 0;
+    this.startY = 0;
     this.endX = 0;
     this.curentStep = 0;
     this.touchStart = false;
@@ -487,31 +488,17 @@ class TouchGalleryScale {
       // e.preventDefault()
       // e.stopPropagation()
     this.updateTouchState(e)
-    
-     
-     
-      // if(e.touches.length >= 2){
-      //   this.curentPosXtouch2 = Math.floor(e.touches[1].clientX)
-      //   this.scalePicture(this.curentPosX,this.curentPosXtouch2)
-      // } else {
-      //   this.moveAllBoxes(this.curentPosX,this.startX)
-      // } ------------------------------------------------------------------------------Scale
 
-
-      
     })
     
     this.imgContent.addEventListener("touchstart",(e)=>{
       this.updateTouchState(e)
 
-
       this.startX = Math.floor(e.touches[0].clientX)
+      this.startY = Math.floor(e.touches[0].clientY)
       document.body.style.overflow = "hidden"
       this.allBoxesStyle(false)
       this.touchStart = true
-      if(e.touches.length >= 2){
-        this.multiTouch = true
-      }
 
     })
 
@@ -524,8 +511,9 @@ class TouchGalleryScale {
       this.swipeInfo()
       document.body.style.overflow = ""
       this.touchStart = false
-      this.multiTouch = false
+
       this.scalePictureReset()
+      document.querySelector(`${this.target} .glrT__content`).style.overflow = "hidden"
 
     })
 
@@ -533,16 +521,16 @@ class TouchGalleryScale {
     this.imgContent.addEventListener("mouseup",(e)=>{
       let MouseEndX = Math.floor(e.layerX)
 
-      if((MouseEndX <= this.width/2) && !this.touchStart){
+      if(MouseEndX <= this.width/2){
         this.actionMoveForward()
       } 
       
-      if((MouseEndX >= this.width/2) && !this.touchStart){
+      if(MouseEndX >= this.width/2){
         this.actionMoveBackward()
       }
 
       this.allBoxesStyle(true)
-      this.swipeInfo()
+      // this.swipeInfo()
       document.body.style.overflow = ""
 
     })
@@ -556,7 +544,7 @@ class TouchGalleryScale {
     console.log(e.type)
 
     try{
-      if(e.type === 'touchmove'){
+      if(e.type === 'touchmove' && !isMultitouched){
         this.curentPosX = Math.floor(e.touches[0].clientX)
         this.moveAllBoxes(this.curentPosX,this.startX)
       }
@@ -580,6 +568,7 @@ class TouchGalleryScale {
   
     if(isMultitouched){
       if(!zamok){
+        document.querySelector(`${this.target} .glrT__content`).style.overflow = ""
         startVectorDistance =e.touches[0].clientX - e.touches[1].clientX
         zamok = true
       }
@@ -595,10 +584,10 @@ class TouchGalleryScale {
       vectorDistance = Math.sqrt(a*a+b*b)
       remapedDistance = (rem(vectorDistance))
       this.scalePicture(remapedDistance)
+      document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px)`
     } else {
       vectorDistance = 0
       remapedDistance = 0
-      // this.scalePicture(1)
     }
     
     // if(isMultitouched){
