@@ -584,7 +584,7 @@ class TouchGalleryScale {
       vectorDistance = Math.sqrt(a*a+b*b)
       remapedDistance = (rem(vectorDistance))
       this.scalePicture(remapedDistance)
-      document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px)`
+      // document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px)`
     } else {
       vectorDistance = 0
       remapedDistance = 0
