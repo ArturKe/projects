@@ -508,7 +508,11 @@ class TouchGalleryScale {
 
       this.endX = Math.floor(e.changedTouches[0].clientX)
       this.allBoxesStyle(true)
-      this.swipeInfo()
+
+      if(!isTouched){
+        this.swipeInfo()
+      }
+      
       document.body.style.overflow = ""
       this.touchStart = false
 
@@ -587,6 +591,7 @@ class TouchGalleryScale {
       remapedDistance = (rem(vectorDistance))
       // this.scalePicture(1+remapedDistance-startVectorDistance)
        document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px) scale(${1+remapedDistance-startVectorDistance})`
+       document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.zIndex = '10'
     } else {
       vectorDistance = 0
       remapedDistance = 0
