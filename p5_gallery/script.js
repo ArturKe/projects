@@ -131,6 +131,7 @@ class TouchGallery {
     document.querySelector(`${this.target} .glrT__imageContent`).style.width =`${this.width}px`
     document.querySelector(`${this.target} .glrT__imageContent`).style.height =`${this.height}px`
     document.querySelector(`${this.target} .glrT__desc`).style.width =`${this.width}px`
+    document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = "hidden"
     this.glrTCheckLength()
   } // Отрисовка шаблона
 
@@ -460,6 +461,7 @@ class TouchGalleryScale {
     document.querySelector(`${this.target} .glrT__imageContent`).style.width =`${this.width}px`
     document.querySelector(`${this.target} .glrT__imageContent`).style.height =`${this.height}px`
     document.querySelector(`${this.target} .glrT__desc`).style.width =`${this.width}px`
+    document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = "hidden"
     this.glrTCheckLength()
   } // Отрисовка шаблона
 
@@ -491,12 +493,15 @@ class TouchGalleryScale {
     
     this.imgContent.addEventListener("touchstart",(e)=>{
       this.updateTouchState(e)
+     
 
       this.startX = Math.floor(e.touches[0].clientX)
       this.startY = Math.floor(e.touches[0].clientY)
       document.body.style.overflow = "hidden"
       this.allBoxesStyle(false)
       this.touchStart = true
+
+      
       
 
     })
@@ -543,7 +548,8 @@ class TouchGalleryScale {
     // console.log(e)
     e.stopPropagation()
     e.preventDefault()
-    console.log(e.type)
+    // console.log(e.type)
+    
 
     try{
       if(e.type === 'touchmove' && !isMultitouched){
@@ -560,6 +566,10 @@ class TouchGalleryScale {
       isTouched = true
     } else {isTouched = false}
 
+    //  if(isTouched){
+      
+    //  }
+
     // console.log(isTouched)
   
     if(e.touches.length >= 2){
@@ -572,7 +582,7 @@ class TouchGalleryScale {
       
       if(!zamok){
         this.moveAllBoxes(0,0)
-        
+        document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
         let a = e.touches[0].clientX - e.touches[1].clientX
         let b = e.touches[0].clientY - e.touches[1].clientY
         startVectorDistance = rem(Math.sqrt(a*a+b*b))
@@ -593,6 +603,9 @@ class TouchGalleryScale {
        document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
        document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform =`translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px) scale(${1+remapedDistance-startVectorDistance})`
        document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.zIndex = '10'
+       document.querySelectorAll(`${this.target} .glrT__imageItem`)[0].style.opacity = '0'
+       document.querySelectorAll(`${this.target} .glrT__imageItem`)[2].style.opacity = '0'
+      
     } else {
       vectorDistance = 0
       remapedDistance = 0
