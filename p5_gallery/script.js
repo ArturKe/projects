@@ -485,9 +485,7 @@ class TouchGalleryScale {
 
 
     this.imgContent.addEventListener("touchmove",(e)=>{
-      // e.preventDefault()
-      // e.stopPropagation()
-    this.updateTouchState(e)
+      this.updateTouchState(e)
 
     })
     
@@ -499,6 +497,7 @@ class TouchGalleryScale {
       document.body.style.overflow = "hidden"
       this.allBoxesStyle(false)
       this.touchStart = true
+      
 
     })
 
@@ -517,7 +516,7 @@ class TouchGalleryScale {
       this.touchStart = false
 
       this.scalePictureReset()
-      // document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = "hidden"
+      document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = "hidden"
 
     })
 
@@ -534,7 +533,6 @@ class TouchGalleryScale {
       }
 
       this.allBoxesStyle(true)
-      // this.swipeInfo()
       document.body.style.overflow = ""
 
     })
@@ -572,6 +570,7 @@ class TouchGalleryScale {
   
     if(isMultitouched){
       if(!zamok){
+        this.moveAllBoxes(0,0)
         document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
         let a = e.touches[0].clientX - e.touches[1].clientX
         let b = e.touches[0].clientY - e.touches[1].clientY
