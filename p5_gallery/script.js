@@ -520,7 +520,7 @@ class TouchGalleryScale {
 
     })
 
-    //--------------------------------------------------------------- Mouse Up
+    //--------------------------------------------------------------- Mouse Up ------------------------
     this.imgContent.addEventListener("mouseup",(e)=>{
       let MouseEndX = Math.floor(e.layerX)
 
@@ -569,9 +569,10 @@ class TouchGalleryScale {
     }
   
     if(isMultitouched){
+      document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
       if(!zamok){
         this.moveAllBoxes(0,0)
-        document.querySelector(`${this.target} .glrT__imageContent`).style.overflow = ""
+        
         let a = e.touches[0].clientX - e.touches[1].clientX
         let b = e.touches[0].clientY - e.touches[1].clientY
         startVectorDistance = rem(Math.sqrt(a*a+b*b))
