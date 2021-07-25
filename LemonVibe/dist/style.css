@@ -11,7 +11,7 @@
 }
 .game_body__top {
     height: 30px;
-    background: blueviolet;
+    background: rgb(173, 131, 211);
     z-index: 5;
 }
 .game_body__counter {
@@ -22,7 +22,7 @@
 }
 .game_body__middle {
     height: 300px;
-    background: rgba(241, 139, 139, 0.632);
+    background: linear-gradient(0deg, rgba(240,240,249,1) 0%, rgba(171,205,223,1) 62%, rgba(0,212,255,1) 100%);
 
 }
 .game_body__bottom {
@@ -38,9 +38,9 @@
 }
 .lemon{
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: chartreuse;
+    width: 40px;
+    height: 40px;
+    background: url('../img/food-lemon.png') center/cover no-repeat;
 
 }
 
