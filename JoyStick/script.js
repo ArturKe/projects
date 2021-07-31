@@ -113,9 +113,9 @@ function update(){
     camera.position.x += Math.sin(camera.rotation.y + Math.PI / 2) * +joyLeft.get().x/2;
     camera.position.z += Math.cos(camera.rotation.y + Math.PI / 2) * +joyLeft.get().x/2;
     
-    camera.rotation.y -= +joy.get().x/100;
+    camera.rotation.y -= +joy.get().x/200;
     //camera.rotation.y -= +joyLeft.get().x/100;
-    //camera.position.y += +joyLeft.get().y/5;
+    camera.position.y += +joyLeft.get().y/5;
 
     //-------------------------------------------------------------------------Test
 

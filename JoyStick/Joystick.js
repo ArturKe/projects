@@ -120,16 +120,16 @@ class Joystick {
         console.log(`.${this.classStick}`)
 
         document.querySelector(`.${this.classStick}`).addEventListener('touchstart',(e)=>{
-            mouseState.startX = Math.floor(e.touches[0].clientX)
+            mouseState.startX = Math.floor(e.touches[e.which].clientX)
             mouseState.startOffsetX = 0
             mouseState.curentPosX = +document.querySelector(`.${this.classStick}`).style.left.slice(0,2)
-            mouseState.startY = Math.floor(e.touches[0].clientY)
+            mouseState.startY = Math.floor(e.touches[e.which].clientY)
             mouseState.startOffsetY = 0
             mouseState.curentPosY = +document.querySelector(`.${this.classStick}`).style.top.slice(0,2)
 
             console.log("Pressed")
             // console.log(mouseState.StartX)
-            // console.log(e)
+            // console.log(e.which)
             // this.x++
             this.isPressed = true
         })
@@ -166,8 +166,8 @@ class Joystick {
         
 
         if(touch){
-           touchCurentPosX  = Math.floor(e.touches[0].clientX)
-           touchCurentPosY  = Math.floor(e.touches[0].clientY)
+           touchCurentPosX  = Math.floor(e.touches[e.which].clientX)
+           touchCurentPosY  = Math.floor(e.touches[e.which].clientY)
         } 
         
         if(!touch){
