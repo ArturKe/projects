@@ -115,7 +115,7 @@ function update(){
     
     camera.rotation.y -= +joy.get().x/200;
     //camera.rotation.y -= +joyLeft.get().x/100;
-    camera.position.y += +joyLeft.get().y/5;
+    camera.position.y -= +joyLeft.get().y/5;
 
     //-------------------------------------------------------------------------Test
 
