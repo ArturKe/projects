@@ -116,6 +116,7 @@ class Joystick {
             curentPosY: 0,
             touchIndex: 0
         }
+        let isTouched = false
         
 
         
@@ -123,33 +124,65 @@ class Joystick {
         console.log(`.${this.classStick}`)
 
         document.querySelector(`.${this.classStick}`).addEventListener('touchstart',(e)=>{
-            for(let i=0; i < e.touches.length; i++){item => {
-                    if(e.touches[i].target.classList.value === this.classStick){
-                        mouseState.touchIndex = item.identifier
-                    }
-                }
-            }
-            mouseState.startX = Math.floor(e.touches[mouseState.touchIndex].clientX)
-            mouseState.startOffsetX = 0
-            mouseState.curentPosX = +document.querySelector(`.${this.classStick}`).style.left.slice(0,2)
-            mouseState.startY = Math.floor(e.touches[mouseState.touchIndex].clientY)
-            mouseState.startOffsetY = 0
-            mouseState.curentPosY = +document.querySelector(`.${this.classStick}`).style.top.slice(0,2)
 
-            console.log("Pressed")
+            // if(!isTouched){}
+            
+            if(e.target.classList.value === this.classStick){ //проверка на свое срабатывание
+
+                if(e.touches.length > 1){
+                    for(let i=0; i < e.touches.length; i++){item => {
+                            if(e.touches[i].target.classList.value === this.classStick){
+                                mouseState.touchIndex = item.identifier
+                                mouseState.startX = Math.floor(e.touches[mouseState.touchIndex].clientX)
+                                mouseState.startY = Math.floor(e.touches[mouseState.touchIndex].clientY)
+                                
+                            }
+                        }}
+
+                } else {
+                    mouseState.startX = Math.floor(e.touches[mouseState.touchIndex].clientX)
+                    mouseState.startY = Math.floor(e.touches[mouseState.touchIndex].clientY)
+                }
+
+
+                mouseState.startOffsetX = 0
+                mouseState.startOffsetY = 0
+                mouseState.curentPosX = +document.querySelector(`.${this.classStick}`).style.left.slice(0,2)
+                mouseState.curentPosY = +document.querySelector(`.${this.classStick}`).style.top.slice(0,2)
+    
+                console.log("Pressed")
+               
+                // console.log(e.touches[0].target.classList.value)
+                // console.log(e.touches[0].target.classList.value === this.classStick)
+                // this.x++
+                this.isPressed = true
+
+
+            }
+
+            
+            
+            
+            
            
-            console.log(e.touches[0].target.classList.value)
-            console.log(e.touches[0].target.classList.value === this.classStick)
-            // this.x++
-            this.isPressed = true
         })
 
-        document.querySelector(`.${this.classStick}`).addEventListener('touchend',()=>{
-            console.log("Released")
-            this.isPressed = false
-            this.resetStickPosition()
-            this.x = 0
-            this.y = 0
+        document.querySelector(`.${this.classStick}`).addEventListener('touchend',(e)=>{
+            
+            if(e.target.classList.value === this.classStick){
+                console.log("Released")
+                this.isPressed = false
+                this.resetStickPosition()
+                this.x = 0
+                this.y = 0
+
+
+                isTouched = false
+            }
+
+
+            console.log(e.target.classList.value === this.classStick )
+            console.log('---------------------------')
         })
 
 
