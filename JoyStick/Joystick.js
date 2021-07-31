@@ -113,17 +113,26 @@ class Joystick {
             startOffsetX: 0,
             startOffsetY: 0,
             curentPosX: 0,
-            curentPosY: 0
+            curentPosY: 0,
+            touchIndex: 0
         }
+        
+
         
         console.log('binding Touch')
         console.log(`.${this.classStick}`)
 
         document.querySelector(`.${this.classStick}`).addEventListener('touchstart',(e)=>{
-            mouseState.startX = Math.floor(e.touches[e.touches.length-1].clientX)
+            for(let i=0; i < e.touches.length; i++){item => {
+                    if(item.target === this.classStick){
+                        mouseState.touchIndex = item.identifier
+                    }
+                }
+            }
+            mouseState.startX = Math.floor(e.touches[mouseState.touchIndex].clientX)
             mouseState.startOffsetX = 0
             mouseState.curentPosX = +document.querySelector(`.${this.classStick}`).style.left.slice(0,2)
-            mouseState.startY = Math.floor(e.touches[e.touches.length-1].clientY)
+            mouseState.startY = Math.floor(e.touches[mouseState.touchIndex].clientY)
             mouseState.startOffsetY = 0
             mouseState.curentPosY = +document.querySelector(`.${this.classStick}`).style.top.slice(0,2)
 
@@ -166,8 +175,8 @@ class Joystick {
         
 
         if(touch){
-           touchCurentPosX  = Math.floor(e.touches[e.touches.length-1].clientX)
-           touchCurentPosY  = Math.floor(e.touches[e.touches.length-1].clientY)
+           touchCurentPosX  = Math.floor(e.touches[data.touchIndex].clientX)
+           touchCurentPosY  = Math.floor(e.touches[data.touchIndex].clientY)
         } 
         
         if(!touch){
