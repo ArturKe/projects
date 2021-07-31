@@ -124,7 +124,7 @@ class Joystick {
 
         document.querySelector(`.${this.classStick}`).addEventListener('touchstart',(e)=>{
             for(let i=0; i < e.touches.length; i++){item => {
-                    if(item.target === this.classStick){
+                    if(item.target.classList.value === this.classStick){
                         mouseState.touchIndex = item.identifier
                     }
                 }
@@ -137,8 +137,8 @@ class Joystick {
             mouseState.curentPosY = +document.querySelector(`.${this.classStick}`).style.top.slice(0,2)
 
             console.log("Pressed")
-            // console.log(mouseState.StartX)
-            console.log(e)
+           
+            console.log(e.touches[0].target.classList.value)
             // this.x++
             this.isPressed = true
         })
