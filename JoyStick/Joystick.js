@@ -1,35 +1,46 @@
 class Joystick {
-    constructor(target){
+    constructor(target, jPosition = {top: null, right: null, bottom: null, left:null}, jSize = 150, stickSize = 60){
         this.className = target;
+        this.joystickPosition = jPosition
         this.state = {};
         this.x = 0;
         this.y = 0;
-        this.joystikSize = 150
-        this.stickSize = 50 
+        this.joystikSize = jSize;
+        this.stickSize = stickSize;
+
         this.styleButton = `style="height: 20px; width: 100px "`
         this.styleStick = `style="position:absolute; height: ${this.stickSize}px; width: ${this.stickSize}px; background: red; left:${this.joystikSize/2-this.stickSize/2}px; top:${this.joystikSize/2-this.stickSize/2}px;  border: 2px red solid; border-radius: 5px; box-sizing: border-box;"`
-        this.styleJoystick = `style="display:block; position:absolute; bottom:0px; height: ${this.joystikSize}px; width: ${this.joystikSize}px; right:100px; display: flex; justify-content: center; align-items: center; border: 2px red solid; border-radius: 5px"`
-        this.classJoystick = 'joystick'
-        this.classButton = 'joystick_button'
-        this.classStick = 'joystick_stick'
+        this.styleJoystick = `style="display:block; position:absolute; bottom:${this.joystickPosition.bottom}px; right:${this.joystickPosition.right}px; left:${this.joystickPosition.left}px;height: ${this.joystikSize}px; width: ${this.joystikSize}px;  display: flex; justify-content: center; align-items: center; border: 2px red solid; border-radius: 5px"`
+
+        this.classJoystick =  this.generateClassName('joystick')  //'joystick'
+        this.classButton = this.generateClassName('joystick_button')//'joystick_button'
+        this.classStick = this.generateClassName('joystick_stick')//'joystick_stick'
         this.isPressed = false;
+        // this.bindTarget
+        
+
 
         this.initDraw()
-
-
+        
     }
 
     initDraw(){
+        // const classStick = this.generateClassName('joystick_stick')//'joystick_stick'
+
         console.log('Drawing')
+        console.log(this.classStick)
         let template = `
         <div class="${this.classJoystick}" ${this.styleJoystick} >
         
         <div class="${this.classStick}"  ${this.styleStick}></div>
         </div>`
         document.querySelector(this.className).innerHTML += template
+
+        // const bindTarget = document.querySelector(`.${classStick}`)
         
         this.bindEventsMouse()
         this.bindEventsTouch()
+        
 
         // <button ${this.styleButton} class="${this.classButton}">Rright</button>
 
@@ -45,7 +56,8 @@ class Joystick {
             curentPosY: 0
         }
         
-        console.log('binding')
+        console.log('binding Mouse')
+        console.log(`.${this.classStick}`)
 
         document.querySelector(`.${this.classStick}`).addEventListener('mousedown',(e)=>{
             mouseState.startX = e.clientX
@@ -101,7 +113,8 @@ class Joystick {
             curentPosY: 0
         }
         
-        console.log('binding')
+        console.log('binding Touch')
+        console.log(`.${this.classStick}`)
 
         document.querySelector(`.${this.classStick}`).addEventListener('touchstart',(e)=>{
             mouseState.startX = Math.floor(e.touches[0].clientX)
@@ -217,6 +230,12 @@ class Joystick {
 
     main(){
         console.log('I am Joystick')
+    }
+
+    generateClassName(className){
+        let newName = className + Math.round(new Date().getTime() * (Math.random()*200+2))
+        console.log("New Class Name: " + newName)
+        return newName
     }
 
 
