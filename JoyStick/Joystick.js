@@ -21,6 +21,8 @@ class Joystick {
 
 
         this.initDraw()
+        this.bindEventsMouse()
+        this.bindEventsTouch()
         
     }
 
@@ -34,12 +36,12 @@ class Joystick {
         
         <div class="${this.classStick}"  ${this.styleStick}></div>
         </div>`
-        document.querySelector(this.className).innerHTML += template
+        document.querySelector(this.className).insertAdjacentHTML('afterend', template);
 
         // const bindTarget = document.querySelector(`.${classStick}`)
         
-        this.bindEventsMouse()
-        this.bindEventsTouch()
+        // this.bindEventsMouse()
+        // this.bindEventsTouch()
         
 
         // <button ${this.styleButton} class="${this.classButton}">Rright</button>
@@ -58,6 +60,7 @@ class Joystick {
         
         console.log('binding Mouse')
         console.log(`.${this.classStick}`)
+        console.log(document.querySelector(`.${this.classStick}`))
 
         document.querySelector(`.${this.classStick}`).addEventListener('mousedown',(e)=>{
             mouseState.startX = e.clientX
