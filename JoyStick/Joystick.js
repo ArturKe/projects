@@ -130,18 +130,18 @@ class Joystick {
             if(e.target.classList.value === this.classStick){ //проверка на свое срабатывание
 
                 if(e.touches.length > 1){
-                    for(let i=0; i < e.touches.length; i++){item => {
+                    for(let i=0; i < e.touches.length; i++){
                             if(e.touches[i].target.classList.value === this.classStick){
-                                mouseState.touchIndex = item.identifier
-                                mouseState.startX = Math.floor(e.touches[mouseState.touchIndex].clientX)
-                                mouseState.startY = Math.floor(e.touches[mouseState.touchIndex].clientY)
+                                //mouseState.touchIndex = item.identifier
+                                mouseState.startX = Math.floor(e.touches[i].clientX)
+                                mouseState.startY = Math.floor(e.touches[i].clientY)
                                 
                             }
-                        }}
+                        }
 
                 } else {
-                    mouseState.startX = Math.floor(e.touches[mouseState.touchIndex].clientX)
-                    mouseState.startY = Math.floor(e.touches[mouseState.touchIndex].clientY)
+                    mouseState.startX = Math.floor(e.touches[0].clientX)
+                    mouseState.startY = Math.floor(e.touches[0].clientY)
                 }
 
 
@@ -150,7 +150,12 @@ class Joystick {
                 mouseState.curentPosX = +document.querySelector(`.${this.classStick}`).style.left.slice(0,2)
                 mouseState.curentPosY = +document.querySelector(`.${this.classStick}`).style.top.slice(0,2)
     
-                console.log("Pressed")
+                // console.log("Pressed")
+                // console.log(e)
+                // for(let i=0; i < 3; i++){
+                //     console.log('/-------------------------/')
+                //     console.log(e)
+                // }
                
                 // console.log(e.touches[0].target.classList.value)
                 // console.log(e.touches[0].target.classList.value === this.classStick)
@@ -181,8 +186,8 @@ class Joystick {
             }
 
 
-            console.log(e.target.classList.value === this.classStick )
-            console.log('---------------------------')
+            // console.log(e.target.classList.value === this.classStick )
+            // console.log('---------------------------')
         })
 
 
@@ -209,8 +214,21 @@ class Joystick {
         
 
         if(touch){
-           touchCurentPosX  = Math.floor(e.touches[data.touchIndex].clientX)
-           touchCurentPosY  = Math.floor(e.touches[data.touchIndex].clientY)
+            if(e.touches.length > 1){
+                for(let i=0; i < e.touches.length; i++){
+                        if(e.touches[i].target.classList.value === this.classStick){
+                            //mouseState.touchIndex = item.identifier
+                            touchCurentPosX = Math.floor(e.touches[i].clientX)
+                            touchCurentPosY = Math.floor(e.touches[i].clientY)
+                            
+                        }
+                    }
+
+            } else {
+                touchCurentPosX  = Math.floor(e.touches[0].clientX)
+                touchCurentPosY  = Math.floor(e.touches[0].clientY)
+            }
+           
         } 
         
         if(!touch){
