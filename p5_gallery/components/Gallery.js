@@ -7,13 +7,16 @@ class TouchGallery {
     this.target = target;
     this.startX = 0;
     this.startY = 0;
+    
     this.endX = 0;
     this.curentStep = 0;
     this.touchStart = false;
     this.multiTouch = false;
+    this.multiStartX = 0;
+    this.multiStartY = 0;
     this.block = false;
     this.rem = this.createRemap(50,300,1,3);
-    this.startDistance
+    this.startDistance = 0;
 
     this.init();
     this.renderImg();
@@ -59,16 +62,16 @@ class TouchGallery {
       e.preventDefault()
       e.stopPropagation()
       
-      // if(e.touches.length >= 2){
-      //   this.multiTouch = true
-      //   if(!this.block){
+      if(e.touches.length >= 2){
+        this.multiTouch = true
+        // if(!this.block){
          
-      //     this.block = true
-      //   }
-      // } else {
-      //   this.multiTouch = false
-      //   this.block = false
-      // }
+        //   this.block = true
+        // }
+      } else {
+        this.multiTouch = false
+        // this.block = false
+      }
 
         
       this.curentPosX = Math.floor(e.touches[0].clientX)
@@ -95,6 +98,8 @@ class TouchGallery {
       if(e.touches.length >= 2){
         this.multiTouch = true
         this.startDistance = this.rem(this.calcVecorDistance(e))
+        this.multiStartX = (e.touches[0].clientX + e.touches[1].clientX)/2
+        this.multiStartY = (e.touches[0].clientY + e.touches[1].clientY)/2
       } else {
         this.multiTouch = false
       }
@@ -138,8 +143,8 @@ class TouchGallery {
    
     //let item1 = document.querySelectorAll(`${this.target} .glrT__imageItem`)[1]
 
-    let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 - this.startX
-    let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2 - this.startY
+    let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 - this.multiStartX
+    let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2 - this.multiStartY
     let scale = this.rem(this.calcVecorDistance(e)) - this.startDistance
     if (scale < 1){
         scale = 1
