@@ -64,8 +64,9 @@ class TouchGallery {
       
       if(e.touches.length >= 2){
         this.multiTouch = true
-        console.log('MultiTouch Activate')
+        // console.log('MultiTouch Activate')
         if(!this.block){
+          console.log('MultiTouch Activate')
           this.startDistance = this.rem(this.calcVecorDistance(e))
           this.multiStartX = (e.touches[0].clientX + e.touches[1].clientX)/2
           this.multiStartY = (e.touches[0].clientY + e.touches[1].clientY)/2
@@ -80,6 +81,7 @@ class TouchGallery {
       } else {
         this.multiTouch = false
         this.block = false
+        console.log('MultiTouch DeActivate: this.multiTouch' + this.multiTouch)
       }
 
         
@@ -143,14 +145,18 @@ class TouchGallery {
   } 
   
   scalePicture(e,startVectorDistance){ 
-    console.log('Scale MultiTouch Activate')
+    console.log('Scale---- MultiTouch Activate')
     // let distance = Math.abs(this.rem(this.calcVecorDistance(e)) - startVectorDistance)
     // if (distance < 1){
     //   distance = 1
     // }
+    
 
     let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 - this.multiStartX
     let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2 - this.multiStartY
+    console.log('moveX:' + moveX )
+    console.log('moveX:' + moveY )
+
     let scale = this.rem(this.calcVecorDistance(e))
     if (scale < 1){
         scale = 1
