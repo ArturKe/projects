@@ -131,16 +131,17 @@ class TouchGallery {
     // if (distance < 1){
     //   distance = 1
     // }
+    //let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 + this.startX
     let item1 = document.querySelectorAll(`${this.target}.glrT__imageItem`)[1]
-    let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 + this.startX
-    let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2 + this.startY
+    let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2
+    let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2
     let scale = this.rem(this.calcVecorDistance(e))
     if (scale < 1){
         scale = 1
       }
     item1.style.transform=`scale(${scale})`  
-    item1.style.left =`${moveX}px`  
-    item1.style.top =`${moveY}px`  
+    item1.style.transform =`translate(${moveX}px, ${moveY}px)`
+    
   }
 
   createRemap(inMin, inMax, outMin, outMax) {
