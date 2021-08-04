@@ -139,8 +139,8 @@ class TouchGallery {
     if (scale < 1){
         scale = 1
       }
-    item1.style.transform = `translate(${moveX}px, ${moveY}px)`
-    item1.style.transform = `scale(${scale})`  
+    //item1.style.transform = `translate(${moveX}px, ${moveY}px)`
+    document.querySelectorAll(`${this.target}.glrT__imageItem`)[1].style.transform = `scale(${scale})`  
     
     
   }
