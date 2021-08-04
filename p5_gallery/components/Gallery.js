@@ -64,13 +64,16 @@ class TouchGallery {
       
       if(e.touches.length >= 2){
         this.multiTouch = true
-        // if(!this.block){
+        if(!this.block){
+          this.startDistance = this.rem(this.calcVecorDistance(e))
+          this.multiStartX = (e.touches[0].clientX + e.touches[1].clientX)/2
+          this.multiStartY = (e.touches[0].clientY + e.touches[1].clientY)/2
          
-        //   this.block = true
-        // }
+          this.block = true
+        }
       } else {
         this.multiTouch = false
-        // this.block = false
+        this.block = false
       }
 
         
@@ -97,9 +100,7 @@ class TouchGallery {
 
       if(e.touches.length >= 2){
         this.multiTouch = true
-        this.startDistance = this.rem(this.calcVecorDistance(e))
-        this.multiStartX = (e.touches[0].clientX + e.touches[1].clientX)/2
-        this.multiStartY = (e.touches[0].clientY + e.touches[1].clientY)/2
+        
       } else {
         this.multiTouch = false
       }
@@ -145,7 +146,7 @@ class TouchGallery {
 
     let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 - this.multiStartX
     let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2 - this.multiStartY
-    let scale = this.rem(this.calcVecorDistance(e)) - this.startDistance
+    let scale = this.rem(this.calcVecorDistance(e))
     if (scale < 1){
         scale = 1
       }
