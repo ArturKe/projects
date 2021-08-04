@@ -132,7 +132,7 @@ class TouchGallery {
     //   distance = 1
     // }
     //let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 + this.startX
-    let item1 = document.querySelectorAll(`${this.target}.glrT__imageItem`)[1]
+    //let item1 = document.querySelectorAll(`${this.target}.glrT__imageItem`)[1]
     // let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2
     // let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2
     let scale = this.rem(this.calcVecorDistance(e))
