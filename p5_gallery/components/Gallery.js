@@ -154,8 +154,8 @@ class TouchGallery {
     console.log('multiStartX:' + this.multiStartX )
     console.log('multiStartY:' + this.multiStartY )
 
-    let scale = this.rem(this.calcVecorDistance(e)) - startDistance
-    
+    let scale = 1 + this.rem(this.calcVecorDistance(e)) - startDistance
+
     if (scale < 1){
         scale = 1
       }
