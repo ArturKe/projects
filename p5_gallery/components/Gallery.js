@@ -64,10 +64,16 @@ class TouchGallery {
       
       if(e.touches.length >= 2){
         this.multiTouch = true
+        console.log('MultiTouch Activate')
         if(!this.block){
           this.startDistance = this.rem(this.calcVecorDistance(e))
           this.multiStartX = (e.touches[0].clientX + e.touches[1].clientX)/2
           this.multiStartY = (e.touches[0].clientY + e.touches[1].clientY)/2
+          console.log('MultiTouch Variable Activate')
+          console.log(this.startDistance)
+          console.log(this.multiStartX)
+          console.log(this.multiStartY)
+          console.log('-----------------------------')
          
           this.block = true
         }
@@ -137,12 +143,11 @@ class TouchGallery {
   } 
   
   scalePicture(e,startVectorDistance){ 
+    console.log('Scale MultiTouch Activate')
     // let distance = Math.abs(this.rem(this.calcVecorDistance(e)) - startVectorDistance)
     // if (distance < 1){
     //   distance = 1
     // }
-   
-    //let item1 = document.querySelectorAll(`${this.target} .glrT__imageItem`)[1]
 
     let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 - this.multiStartX
     let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2 - this.multiStartY
@@ -152,8 +157,6 @@ class TouchGallery {
       }
     
     document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `scale(${scale}) translate(${moveX}px, ${moveY}px)`  
-    
-    
   }
 
   createRemap(inMin, inMax, outMin, outMax) {
