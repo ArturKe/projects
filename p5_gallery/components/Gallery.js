@@ -11,7 +11,7 @@ class TouchGallery {
     this.touchStart = false;
     this.multiTouch = false;
     this.block = false;
-    this.rem = this.createRemap(50,300,1,2);
+    this.rem = this.createRemap(50,300,1,3);
 
     this.init();
     this.renderImg();
@@ -126,11 +126,14 @@ class TouchGallery {
   } 
   
   scalePicture(e,startVectorDistance){ 
-    let distance = Math.abs(this.rem(this.calcVecorDistance(e)) - startVectorDistance)
-    if (distance < 1){
-      distance = 1
-    }
+    // let distance = Math.abs(this.rem(this.calcVecorDistance(e)) - startVectorDistance)
+    // if (distance < 1){
+    //   distance = 1
+    // }
     let scale = this.rem(this.calcVecorDistance(e))
+    if (scale < 1){
+        scale = 1
+      }
     document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform=`scale(${scale})`  
   }
 
