@@ -130,7 +130,7 @@ class TouchGallery {
     if (distance < 1){
       distance = 1
     }
-    let scale = distance
+    let scale = this.rem(this.calcVecorDistance(e))
     document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform=`scale(${scale})`  
   }
 
