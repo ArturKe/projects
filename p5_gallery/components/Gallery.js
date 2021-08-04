@@ -13,6 +13,7 @@ class TouchGallery {
     this.multiTouch = false;
     this.block = false;
     this.rem = this.createRemap(50,300,1,3);
+    this.startDistance
 
     this.init();
     this.renderImg();
@@ -57,18 +58,17 @@ class TouchGallery {
     this.imgContent.addEventListener("touchmove",(e)=>{
       e.preventDefault()
       e.stopPropagation()
-      let startDistance
-
-      if(e.touches.length >= 2){
-        this.multiTouch = true
-        if(!this.block){
-          startDistance = this.rem(this.calcVecorDistance(e))
-          this.block = true
-        }
-      } else {
-        this.multiTouch = false
-        this.block = false
-      }
+      
+      // if(e.touches.length >= 2){
+      //   this.multiTouch = true
+      //   if(!this.block){
+         
+      //     this.block = true
+      //   }
+      // } else {
+      //   this.multiTouch = false
+      //   this.block = false
+      // }
 
         
       this.curentPosX = Math.floor(e.touches[0].clientX)
@@ -91,8 +91,12 @@ class TouchGallery {
       document.body.style.overflow = "hidden"
       this.allBoxesStyle(false)
       this.touchStart = true
+
       if(e.touches.length >= 2){
         this.multiTouch = true
+        this.startDistance = this.rem(this.calcVecorDistance(e))
+      } else {
+        this.multiTouch = false
       }
 
     })
@@ -131,15 +135,16 @@ class TouchGallery {
     // if (distance < 1){
     //   distance = 1
     // }
-    //let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 + this.startX
+   
     //let item1 = document.querySelectorAll(`${this.target} .glrT__imageItem`)[1]
+
     let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 - this.startX
     let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2 - this.startY
-    let scale = this.rem(this.calcVecorDistance(e))
+    let scale = this.rem(this.calcVecorDistance(e)) - this.startDistance
     if (scale < 1){
         scale = 1
       }
-    // document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `translate(${moveX}px, ${moveY}px)`
+    
     document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `scale(${scale}) translate(${moveX}px, ${moveY}px)`  
     
     
