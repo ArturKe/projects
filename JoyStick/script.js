@@ -162,7 +162,7 @@ function update(){
     group.children[0].rotation.x = joy.get().y/3  // Наклон вперед
 
     group.children[0].rotation.y = +joy.get().x/4*-1
-    group.children[0].rotation.z = +joy.get().x/6*-1 + +joyLeft.get().x/5*-1 //Наклон в бок
+    group.children[0].rotation.z = +joy.get().x/5*-1 + +joyLeft.get().x/5*-1 //Наклон в бок
 
     //group.children[0].rotation.z = +joyLeft.get().x/5*-1
     //console.log(group.children)
