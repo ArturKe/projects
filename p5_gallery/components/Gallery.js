@@ -132,15 +132,15 @@ class TouchGallery {
     //   distance = 1
     // }
     //let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2 + this.startX
-    let item1 = document.querySelectorAll(`${this.target} .glrT__imageItem`)[1]
+    //let item1 = document.querySelectorAll(`${this.target} .glrT__imageItem`)[1]
     let moveX = (e.touches[0].clientX + e.touches[1].clientX)/2
     let moveY = (e.touches[0].clientY + e.touches[1].clientY)/2
     let scale = this.rem(this.calcVecorDistance(e))
     if (scale < 1){
         scale = 1
       }
-    item1.style.transform = `translate(${moveX}px, ${moveY}px)`
-    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `scale(${scale})`  
+    // document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `translate(${moveX}px, ${moveY}px)`
+    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `scale(${scale}) translate(${moveX}px, ${moveY}px)`  
     
     
   }
