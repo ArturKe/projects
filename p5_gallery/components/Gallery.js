@@ -140,7 +140,7 @@ class TouchGallery {
         scale = 1
       }
     // document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `translate(${moveX}px, ${moveY}px)`
-    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `scale(${scale}) translate(${e.touches[0].clientX - this.startX}px, ${e.touches[0].clientY - this.startY}px)`  
+    document.querySelectorAll(`${this.target} .glrT__imageItem`)[1].style.transform = `scale(${scale}) translate(${moveX}px, ${moveY}px)`  
     
     
   }
