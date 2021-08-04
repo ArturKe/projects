@@ -11,7 +11,7 @@ class TouchGallery {
     this.touchStart = false;
     this.multiTouch = false;
     this.block = false;
-    this.rem = this.createRemap(50,300,0,2);
+    this.rem = this.createRemap(50,300,1,2);
 
     this.init();
     this.renderImg();
