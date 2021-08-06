@@ -69,7 +69,7 @@ list.innerHTML += `<div class="proj_item">
                         
 
                         <div class="item_desc">${value.desc}</div>
-                        <a href="#"> 
+                        <a href="https://github.com/ArturKe/"> 
                             <div class="item_link_git"> Git Link </div> 
                         </a>
                     </div>           
