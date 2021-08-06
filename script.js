@@ -11,7 +11,7 @@ const list = document.querySelector('.proj_list')
 
 const projList = [
     {title: 'JS Gallery', desc: 'Image gallery like Instagram', link:'p5_gallery/index.html',img:'img/Gallery.JPG'},
-    {title: 'LemonVibe', desc: 'JS game, catch all lemons', link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg'},
+    {title: 'Lemon Vibe', desc: 'JS game, catch all lemons', link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg'},
     {title: '3D Tour', desc: 'Three JS game. Expore 3D world!', link:'JoyStick/index.html',img:'img/Venus.JPG'},
 	{title: 'Venus 3D', desc: 'Sculpture of Venus de Milo. Made by using ThreeJS', link:'Venus/dist/index.html',img:'img/Venus.JPG'},
 	{title: 'Landing page Uber', desc: 'Uber landing page for PC', link:'Proj_4/index.html',img:'img/LandingUber.JPG'},
@@ -59,7 +59,7 @@ for(let value of projList){
 list.innerHTML += `<div class="proj_item">
                     <div>
                         <a href="${value.link}">
-                            <div class="item_img" style="background: url(${value.img})  top/cover no-repeat"> </div>
+                            <div class="item_img" style="background: url(${value.img})  center/contain no-repeat"> </div>
                         </a>
                     </div>
                     <div class="item_second_block">   
