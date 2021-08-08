@@ -46,33 +46,51 @@ btn.addEventListener('click',function(event){
     
 })
 
+function drawList(){
+    list.innerHTML = ''
+    let counter = 0
 
-list.innerHTML = ''
-
-
-for(let value of projList){
-	console.log(`Title: ${value.title} and Desc:${value.desc}`)
-}
-
-
-for(let value of projList){
-list.innerHTML += `<div class="proj_item">
-                    <div>
-                        <a href="${value.link}">
-                            <div class="item_img" style="background: url(${value.img})  center/contain no-repeat"> </div>
-                        </a>
+    for(let value of projList){
+        counter++
+        list.innerHTML += `
+        <div class="proj_item">
+            <div class="item_first_block">
+                <a href="${value.link}"> 
+                    <div class="item_link"> Project #${counter} </div> 
+                </a>
+                <a href="https://github.com/ArturKe/"> 
+                        <div class="item_link_git"> Git Link </div> 
+                </a>
+            </div>
+            <div class="item_second_block"> 
+    
+                <a href="${value.link}">
+                    <div class="item_img" style="background: url(${value.img})  center/cover no-repeat"> </div>
+                </a> 
+                
+                
+                
+    
+                <div class="item_desc">
+                    
+                    <div class="item_desc_text">
+                    <a href="${value.link}"> 
+                        <div class="item_title"> ${value.title} </div> 
+                    </a>
+                    <div>${value.desc}</div>
+                    
                     </div>
-                    <div class="item_second_block">   
-                        <a href="${value.link}"> 
-                            <div class="item_link"> ${value.title} </div> 
-                        </a>
-                        
+                    
+                </div>
+                
+            </div>           
+        </div>`
+    }
 
-                        <div class="item_desc">${value.desc}</div>
-                        <a href="https://github.com/ArturKe/"> 
-                            <div class="item_link_git"> Git Link </div> 
-                        </a>
-                    </div>           
-                </div>`
 }
+
+drawList()
+
+
+
 
