@@ -10,12 +10,12 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
-    {title: 'JS Gallery', desc: 'Image gallery like Instagram', link:'p5_gallery/index.html',img:'img/Gallery.JPG'},
-    {title: 'Lemon Vibe', desc: 'JS game, catch all lemons', link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg'},
-    {title: '3D Tour', desc: 'Three JS game. Expore 3D world!', link:'JoyStick/index.html',img:'img/Venus.JPG'},
-	{title: 'Venus 3D', desc: 'Sculpture of Venus de Milo. Made by using ThreeJS', link:'Venus/dist/index.html',img:'img/Venus.JPG'},
-	{title: 'Landing page Uber', desc: 'Uber landing page for PC', link:'Proj_4/index.html',img:'img/LandingUber.JPG'},
-    {title: 'Landing page Wordpress', desc: 'Wordpress landing page for PC', link:'Proj_1/index.html',img:'img/Landing.JPG'},
+    {title: 'JS Gallery', desc: 'Image gallery like Instagram', link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
+    {title: 'Lemon Vibe', desc: 'JS game, catch all lemons', link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg', gitLink: 'https://github.com/ArturKe/LemonVibe'},
+    {title: '3D Tour', desc: 'Three JS game. Expore 3D world!', link:'JoyStick/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe/3D-Tour'},
+	{title: 'Venus 3D', desc: 'Sculpture of Venus de Milo. Made by using ThreeJS', link:'Venus/dist/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+	{title: 'Landing page Uber', desc: 'Uber landing page for PC', link:'Proj_4/index.html',img:'img/LandingUber.JPG', gitLink: 'https://github.com/ArturKe'},
+    {title: 'Landing page Wordpress', desc: 'Wordpress landing page for PC', link:'Proj_1/index.html',img:'img/Landing.JPG', gitLink: 'https://github.com/ArturKe'},
     
 ] 
 
@@ -58,7 +58,7 @@ function drawList(){
                 <a href="${value.link}"> 
                     <div class="item_link"> Project #${counter} </div> 
                 </a>
-                <a href="https://github.com/ArturKe/"> 
+                <a href="${value.gitLink}"> 
                         <div class="item_link_git"> Git Link </div> 
                 </a>
             </div>
