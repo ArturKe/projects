@@ -16,7 +16,7 @@ const projList = [
     {title: 'Lemon Vibe', en_desc: 'JS game, catch all lemons', ru_desc:'Простая игра, где надо собирать лемоны. Написана на чистом JavaScript',
     link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg', gitLink: 'https://github.com/ArturKe/LemonVibe'},
     
-    {title: '3D Tour', en_desc: 'Three JS game. Expore 3D world!', ru_desc:'Демонстрация работы виртуальных джойстиков, передвигайтесь в 3D мире используя их. ThreeJS',
+    {title: 'UFO 3D Game', en_desc: 'Three JS game. Expore 3D world on UFO plate!', ru_desc:'Демонстрация работы виртуальных джойстиков, летайте на НЛО в 3D мире используя их. ThreeJS',
     link:'JoyStick/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe/3D-Tour'},
 	
     {title: 'Venus 3D', en_desc: 'Sculpture of Venus de Milo. Made by using ThreeJS', ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS',
