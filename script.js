@@ -10,12 +10,26 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
-    {title: 'JS Gallery', desc: 'Image gallery like Instagram', link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
-    {title: 'Lemon Vibe', desc: 'JS game, catch all lemons', link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg', gitLink: 'https://github.com/ArturKe/LemonVibe'},
-    {title: '3D Tour', desc: 'Three JS game. Expore 3D world!', link:'JoyStick/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe/3D-Tour'},
-	{title: 'Venus 3D', desc: 'Sculpture of Venus de Milo. Made by using ThreeJS', link:'Venus/dist/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
-	{title: 'Landing page Uber', desc: 'Uber landing page for PC', link:'Proj_4/index.html',img:'img/LandingUber.JPG', gitLink: 'https://github.com/ArturKe'},
-    {title: 'Landing page Wordpress', desc: 'Wordpress landing page for PC', link:'Proj_1/index.html',img:'img/Landing.JPG', gitLink: 'https://github.com/ArturKe'},
+    {title: 'JS Gallery', en_desc: 'Image gallery like Instagram', ru_desc:'Галлерея изображения как в Инстаграмм, пролистывание осуществляется свайпами влево/вправо',
+    link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
+    
+    {title: 'Lemon Vibe', en_desc: 'JS game, catch all lemons', ru_desc:'Простая игра, где надо собирать лемоны. Написана на чистом JavaScript',
+    link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg', gitLink: 'https://github.com/ArturKe/LemonVibe'},
+    
+    {title: '3D Tour', en_desc: 'Three JS game. Expore 3D world!', ru_desc:'Демонстрация работы виртуальных джойстиков, передвигайтесь в 3D мире используя их. ThreeJS',
+    link:'JoyStick/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe/3D-Tour'},
+	
+    {title: 'Venus 3D', en_desc: 'Sculpture of Venus de Milo. Made by using ThreeJS', ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS',
+    link:'Venus/dist/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+	
+    {title: 'Landing page Uber', en_desc: 'Uber landing page for PC', ru_desc:'Посадочная страница Uber, создана в рамках изучения CSS',
+    link:'Proj_4/index.html',img:'img/LandingUber.JPG', gitLink: 'https://github.com/ArturKe'},
+
+    {title: 'Landing page Wordpress', en_desc: 'Wordpress landing page for PC', ru_desc:'Посадочная страница Wordpress, создана в рамках изучения CSS',
+     link:'Proj_1/index.html',img:'img/Landing.JPG', gitLink: 'https://github.com/ArturKe'},
+
+     {title: 'WebXR Lessons', en_desc: 'WebXR Lessons', ru_desc:'Уроки по WebXR',
+     link:'https://twindl.github.io/',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
     
 ] 
 
@@ -29,6 +43,7 @@ btn.addEventListener('click',function(event){
         if (!event.target.classList.contains('active_btn')){
             ru_btn.classList.add('active_btn')
             en_btn.classList.remove('active_btn')
+            drawList('ru')
         }
     } 
 
@@ -39,6 +54,7 @@ btn.addEventListener('click',function(event){
         if (!event.target.classList.contains('active_btn')){
             en_btn.classList.add('active_btn')
             ru_btn.classList.remove('active_btn')
+            drawList('en')
         }
 
     } 
@@ -46,12 +62,21 @@ btn.addEventListener('click',function(event){
     
 })
 
-function drawList(){
+function drawList(language='en'){
     list.innerHTML = ''
     let counter = 0
+    
 
     for(let value of projList){
         counter++
+        let lang
+
+        if(language === 'en'){
+            lang = value.en_desc
+        } else if (language === 'ru'){
+            lang = value.ru_desc
+        }
+
         list.innerHTML += `
         <div class="proj_item">
             <div class="item_first_block">
@@ -68,16 +93,13 @@ function drawList(){
                     <div class="item_img" style="background: url(${value.img})  center/cover no-repeat"> </div>
                 </a> 
                 
-                
-                
-    
                 <div class="item_desc">
                     
-                    <div class="item_desc_text">
+                    <div>
                     <a href="${value.link}"> 
                         <div class="item_title"> ${value.title} </div> 
                     </a>
-                    <div>${value.desc}</div>
+                    <div class="item_desc_text">${lang}</div>
                     
                     </div>
                     

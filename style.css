@@ -216,8 +216,8 @@ margin: 0 20px 0 20px;
     
 }
 .item_desc_text{
-    /* border-left: 1px solid grey; */
-    padding: 5px;
+    padding: 3px;
+    max-width: 550px;
 }
 .item_first_block{
     width: 100%;
@@ -286,6 +286,10 @@ margin: 0 20px 0 20px;
         width: 100%;
     }
 
+    .item_desc_text{
+        padding: 5px;
+    }
+    
     .item_title {
         font-size: 32px;
         text-align: center;
