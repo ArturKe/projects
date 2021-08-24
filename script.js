@@ -30,6 +30,9 @@ const projList = [
 
      {title: 'WebXR Lessons', en_desc: 'WebXR Lessons', ru_desc:'Уроки по WebXR',
      link:'https://twindl.github.io/',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+
+     {title: 'Three Test', en_desc: 'Three Js test', ru_desc:'Three JS',
+     link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
     
 ] 
 
