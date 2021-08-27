@@ -35,7 +35,7 @@ const projList = [
      link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
 
      {title: 'Library', en_desc: 'React App', ru_desc:'React App',
-     link:'library/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+     link:'https://library-crm.web.app/books',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
     
 ] 
 
