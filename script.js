@@ -33,6 +33,9 @@ const projList = [
 
      {title: 'Three Test', en_desc: 'Three Js test', ru_desc:'Three JS',
      link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+
+     {title: 'Library', en_desc: 'React App', ru_desc:'React App',
+     link:'library/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
     
 ] 
 
