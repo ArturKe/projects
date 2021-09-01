@@ -10,6 +10,9 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
+    {title: 'Library', en_desc: 'React App', ru_desc:'React App',
+    link:'https://library-crm.firebaseapp.com/',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+
     {title: 'JS Gallery', en_desc: 'Image gallery like Instagram', ru_desc:'Галлерея изображения как в Инстаграмм, пролистывание осуществляется свайпами влево/вправо',
     link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
     
@@ -32,10 +35,9 @@ const projList = [
      link:'https://twindl.github.io/',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
 
      {title: 'Three Test', en_desc: 'Three Js test', ru_desc:'Three JS',
-     link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+     link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'}
 
-     {title: 'Library', en_desc: 'React App', ru_desc:'React App',
-     link:'https://library-crm.web.app',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+     
     
 ] 
 
