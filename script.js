@@ -10,8 +10,11 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
-    {title: 'Library', en_desc: 'React App', ru_desc:'React App',
-    link:'https://library-crm.firebaseapp.com/',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+    {title: 'Vue test project', en_desc: 'Simple Blog with some features on Vue JS', ru_desc:'Тестовый проект на Vue JS, реализован блог с возможностью добавления, удаления постов.',
+    link:'https://vue-blogster.web.app/',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/vue_simple_blog'},
+
+    {title: 'Book store', en_desc: 'Book Store on React JS', ru_desc:'Реализация книжного магазина на React JS',
+    link:'https://library-crm.firebaseapp.com/',img:'img/book-2.png', gitLink: 'https://github.com/ArturKe/book-store'},
 
     {title: 'JS Gallery', en_desc: 'Image gallery like Instagram', ru_desc:'Галлерея изображения как в Инстаграмм, пролистывание осуществляется свайпами влево/вправо',
     link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
