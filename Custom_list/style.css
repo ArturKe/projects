@@ -39,7 +39,7 @@ header{
 }
 
 .item{
-    background-color: rgb(250, 246, 209);
+    background-color: rgb(255, 247, 210);
     font-size: 20px;
     margin-top: 5px;
     padding: 3px;
@@ -70,4 +70,13 @@ header{
     input, select, textarea {
       font-size: 16px;
     }
+}
+
+button{
+    padding: 8px 15px;
+    border: 1px solid rgb(88, 88, 88);
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
 }

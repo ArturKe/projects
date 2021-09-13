@@ -137,7 +137,7 @@ function ter(num){
     let formTemplate = `
     <div class='inputForm form${num}'>
 
-        <input class='inputItem input${num}' type="text">
+        <input placeholder="Name of item" class='inputItem input${num}' type="text">
         <button class='btnForm${num}'>Add item</button>
     </div>`
 
