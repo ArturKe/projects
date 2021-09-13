@@ -10,6 +10,9 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
+    {title: 'Cutom list', en_desc: 'Custom list', ru_desc:'Настраиваемыеб связанные списки',
+    link:'Custom_list/index.html',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/'},
+
     {title: 'Vue test project', en_desc: 'Simple Blog with some features on Vue JS', ru_desc:'Тестовый проект на Vue JS, реализован блог с возможностью добавления, удаления постов.',
     link:'https://vue-blogster.web.app/',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/vue_simple_blog'},
 
