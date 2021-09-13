@@ -85,7 +85,7 @@ function tagView(tagName){
         document.querySelector(`.btnForm${randomNum}`).addEventListener('click',(e)=>{
 
             let val = document.querySelector(`.input${randomNum}`).value
-            if(val.length > 0){
+            if(val.trim().length > 0){
                 console.log( val )
                 console.log( val.length )
 
