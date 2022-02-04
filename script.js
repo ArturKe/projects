@@ -10,6 +10,9 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
+    {title: 'Web VR', en_desc: 'Vr Template demonstration scene', ru_desc:'Демонстрационная сцена Web XR',
+    link:'Aurus/index.html',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/'},
+
     {title: 'Cutom list', en_desc: 'Custom list', ru_desc:'Настраиваемыеб связанные списки',
     link:'Custom_list/index.html',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/'},
 
