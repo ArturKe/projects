@@ -10,10 +10,25 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
-    {title: 'Web VR', en_desc: 'Vr Template demonstration scene', ru_desc:'Демонстрационная сцена Web XR',
+    {title: 'Web VR', en_desc: 'VR Template demonstration scene, motion controllers using, best experience in Oculus Quest2', ru_desc:'Демонстрационная сцена Web XR',
     link:'Aurus/index.html',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/'},
 
-    {title: 'Cutom list', en_desc: 'Custom list', ru_desc:'Настраиваемыеб связанные списки',
+    {title: 'JS Gallery', en_desc: 'Image gallery looks like Instagram frames. Customizable size of images and other parameters', ru_desc:'Галлерея изображения как в Инстаграмм, пролистывание осуществляется свайпами влево/вправо',
+    link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
+    
+    {title: 'Lemon Vibe', en_desc: 'Simmple game on Vanila JS, catch all lemons', ru_desc:'Простая игра, где надо собирать лемоны. Написана на чистом JavaScript',
+    link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg', gitLink: 'https://github.com/ArturKe/LemonVibe'},
+    
+    {title: 'UFO 3D Game', en_desc: 'Three JS game. Expore 3D world on UFO plate!', ru_desc:'Демонстрация работы виртуальных джойстиков, летайте на НЛО в 3D мире используя их. ThreeJS',
+    link:'JoyStick/index.html',img:'img/ufo.jpg', gitLink: 'https://github.com/ArturKe/3D-Tour'},
+	
+    {title: 'Venus 3D', en_desc: '3D viewer shows the sculpture of Venus de Milo. Made by using ThreeJS', ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS',
+    link:'Venus/dist/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+
+    {title: 'Three Test', en_desc: 'Three Js stress test, using LOD', ru_desc:'Three JS',
+    link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+
+    {title: 'Cutom list', en_desc: 'Custom list on VUE JS', ru_desc:'Настраиваемые связанные списки',
     link:'Custom_list/index.html',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/'},
 
     {title: 'Vue test project', en_desc: 'Simple Blog with some features on Vue JS', ru_desc:'Тестовый проект на Vue JS, реализован блог с возможностью добавления, удаления постов.',
@@ -22,32 +37,15 @@ const projList = [
     {title: 'Book store', en_desc: 'Book Store on React JS', ru_desc:'Реализация книжного магазина на React JS',
     link:'https://library-crm.firebaseapp.com/',img:'img/book-2.png', gitLink: 'https://github.com/ArturKe/book-store'},
 
-    {title: 'JS Gallery', en_desc: 'Image gallery like Instagram', ru_desc:'Галлерея изображения как в Инстаграмм, пролистывание осуществляется свайпами влево/вправо',
-    link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
-    
-    {title: 'Lemon Vibe', en_desc: 'JS game, catch all lemons', ru_desc:'Простая игра, где надо собирать лемоны. Написана на чистом JavaScript',
-    link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg', gitLink: 'https://github.com/ArturKe/LemonVibe'},
-    
-    {title: 'UFO 3D Game', en_desc: 'Three JS game. Expore 3D world on UFO plate!', ru_desc:'Демонстрация работы виртуальных джойстиков, летайте на НЛО в 3D мире используя их. ThreeJS',
-    link:'JoyStick/index.html',img:'img/ufo.jpg', gitLink: 'https://github.com/ArturKe/3D-Tour'},
-	
-    {title: 'Venus 3D', en_desc: 'Sculpture of Venus de Milo. Made by using ThreeJS', ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS',
-    link:'Venus/dist/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
-	
     {title: 'Landing page Uber', en_desc: 'Uber landing page for PC', ru_desc:'Посадочная страница Uber, создана в рамках изучения CSS',
     link:'Proj_4/index.html',img:'img/LandingUber.JPG', gitLink: 'https://github.com/ArturKe'},
 
     {title: 'Landing page Wordpress', en_desc: 'Wordpress landing page for PC', ru_desc:'Посадочная страница Wordpress, создана в рамках изучения CSS',
      link:'Proj_1/index.html',img:'img/Landing.JPG', gitLink: 'https://github.com/ArturKe'},
 
-     {title: 'WebXR Lessons', en_desc: 'WebXR Lessons', ru_desc:'Уроки по WebXR',
-     link:'https://twindl.github.io/',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+    {title: 'WebXR Lessons', en_desc: 'WebXR Lessons', ru_desc:'Уроки по WebXR',
+    link:'https://twindl.github.io/',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'}
 
-     {title: 'Three Test', en_desc: 'Three Js test', ru_desc:'Three JS',
-     link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'}
-
-     
-    
 ] 
 
 btn.addEventListener('click',function(event){
