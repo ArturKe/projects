@@ -261,6 +261,7 @@ margin: 0 20px 0 20px;
     border-bottom: 2px solid rgb(208, 208, 208); */
     border: 1px solid grey;
     border-radius:0 0 30px 30px;
+    padding: 0 0 10px 10px;
 }
 
 .item_link_git{
