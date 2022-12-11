@@ -26,13 +26,15 @@
     width: 100%;
     text-align: center;
     font-size: 20px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .port_wraper .port_img{
 /* background-color: burlywood; */
 
-min-width: 300px;
+width: 300px;
 height: 300px;
 background:  url('./img/photo_2021-03-01_06-46-15_crop1.jpg') center/cover no-repeat;
 border-radius: 100%;
@@ -44,7 +46,12 @@ margin: 0 20px 0 20px;
     display: block;
     width: 400px;
 }
-
+.port_first_block{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    align-items: center;
+}
 .port_wraper .port_desc{
     min-width: 350px;
     max-width: 500px;
