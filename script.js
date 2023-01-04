@@ -20,7 +20,7 @@ const projList = [
     link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg', gitLink: 'https://github.com/ArturKe/LemonVibe'},
     
     {title: 'UFO 3D Game', en_desc: 'Three JS game. Expore 3D world on UFO plate!', ru_desc:'Демонстрация работы виртуальных джойстиков, летайте на НЛО в 3D мире используя их. ThreeJS',
-    link:'JoyStick/index.html',img:'img/ufo.jpg', gitLink: 'https://github.com/ArturKe/3D-Tour'},
+    link:'JoyStick/index.html',img:'img/ufo.jpg', gitLink: 'https://github.com/ArturKe/ufo-game'},
 	
     {title: 'Venus 3D', en_desc: '3D viewer shows the sculpture of Venus de Milo. Made by using ThreeJS', ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS',
     link:'Venus/dist/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
