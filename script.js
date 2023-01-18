@@ -4,13 +4,14 @@ const btn = document.querySelector('.button_wrap')
 const ru_btn = document.querySelector('.ru_btn')
 const en_btn = document.querySelector('.en_btn')
 
-const eng_desc =document.querySelector('.eng_desc')
-const ru_desc =document.querySelector('.ru_desc')
+const eng_desc = document.querySelector('.eng_desc')
+const ru_desc = document.querySelector('.ru_desc')
 
 const list = document.querySelector('.proj_list')
 
 const projList = [
     {title: 'Venus 3D', 
+        visible: true,
         en_desc: '3D viewer shows the sculpture of Venus de Milo. Made by using ThreeJS, TypeScript', 
         ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS, TypeScript',
         link:'venus-new/index.html',
@@ -18,37 +19,59 @@ const projList = [
         gitLink: 'https://github.com/ArturKe/venus-scene'
     },
 
-    {title: 'JS Gallery', en_desc: 'Image gallery looks like Instagram frames. Customizable size of images and other parameters', ru_desc:'Галлерея изображения как в Инстаграмм, пролистывание осуществляется свайпами влево/вправо',
-    link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
-    
-    {title: 'Lemon Vibe', en_desc: 'Simmple game on Vanila JS, catch all lemons', ru_desc:'Простая игра, где надо собирать лемоны. Написана на чистом JavaScript',
-    link:'LemonVibe/dist/index.html',img:'img/screen_lemon.jpg', gitLink: 'https://github.com/ArturKe/LemonVibe'},
-    
-    {title: 'UFO 3D Game', en_desc: 'Three JS game. Expore 3D world on UFO plate!', ru_desc:'Демонстрация работы виртуальных джойстиков, летайте на НЛО в 3D мире используя их. ThreeJS',
-    link:'JoyStick/index.html',img:'img/ufo.jpg', gitLink: 'https://github.com/ArturKe/ufo-game'},
+    {title: 'UFO 3D Game', 
+        visible: true,
+        en_desc: '3D game was created by using ThreeJS. You are alien! Try to expore 3D world on UFO plate and abduct a cows!', 
+        ru_desc:'Демонстрация работы виртуальных джойстиков, летайте на НЛО в 3D мире используя их. ThreeJS',
+        link:'JoyStick/index.html',
+        img:'img/ufo.jpg',
+        gitLink: 'https://github.com/ArturKe/ufo-game'
+    },
 
-    {title: 'Web VR', en_desc: 'VR Template demonstration scene, motion controllers using, best experience in Oculus Quest2', ru_desc:'Демонстрационная сцена Web XR',
+    {title: 'Vue test project',
+        visible: true,
+        en_desc: 'Simple Blog with some features on Vue JS', 
+        ru_desc:'Тестовый проект на Vue JS, реализован блог с возможностью добавления, удаления постов.',
+        link:'https://vue-blogster.web.app/',
+        img:'img/vue-logo-small.png', 
+        gitLink: 'https://github.com/ArturKe/vue_simple_blog'
+    },
+    
+    {title: 'Lemon Vibe', 
+        visible: true,
+        en_desc: 'Simple 2D game on Vanila JS. You need to catch all lemons', 
+        ru_desc:'Простая игра, где надо собирать лемоны. Написана на чистом JavaScript',
+        link:'LemonVibe/dist/index.html',
+        img:'img/screen_lemon.jpg',
+        gitLink: 'https://github.com/ArturKe/LemonVibe'
+    },
+
+    {title: 'JS Gallery', visible: true, en_desc: 'Image gallery looks like Instagram frames. Customizable size of images and other parameters', ru_desc:'Галлерея изображения как в Инстаграмм, пролистывание осуществляется свайпами влево/вправо',
+    link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
+
+    {title: 'Web VR', visible: true, en_desc: 'VR Template demonstration scene, motion controllers using, best experience in Oculus Quest2', ru_desc:'Демонстрационная сцена Web XR',
     link:'Aurus/index.html',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/'},
 
-    {title: 'Three Test', en_desc: 'Three Js stress test, using LOD', ru_desc:'Three JS',
-    link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'},
+    {title: 'Three Test', 
+        visible: true, 
+        en_desc: 'Three Js stress test, using LOD. Orbit Contol.', 
+        ru_desc:'Three JS использование LOD',
+        link:'three/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'
+    },
 
-    {title: 'Cutom list', en_desc: 'Custom list on VUE JS', ru_desc:'Настраиваемые связанные списки',
+    {title: 'Cutom list', visible: false, en_desc: 'Custom list on VUE JS', ru_desc:'Настраиваемые связанные списки',
     link:'Custom_list/index.html',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/'},
 
-    {title: 'Vue test project', en_desc: 'Simple Blog with some features on Vue JS', ru_desc:'Тестовый проект на Vue JS, реализован блог с возможностью добавления, удаления постов.',
-    link:'https://vue-blogster.web.app/',img:'img/vue-logo-small.png', gitLink: 'https://github.com/ArturKe/vue_simple_blog'},
-
-    {title: 'Book store', en_desc: 'Book Store on React JS', ru_desc:'Реализация книжного магазина на React JS',
+    {title: 'Book store', visible: true, en_desc: 'Book Store on React JS', ru_desc:'Реализация книжного магазина на React JS',
     link:'https://library-crm.firebaseapp.com/',img:'img/book-2.png', gitLink: 'https://github.com/ArturKe/book-store'},
 
-    {title: 'Landing page Uber', en_desc: 'Uber landing page for PC', ru_desc:'Посадочная страница Uber, создана в рамках изучения CSS',
+    {title: 'Landing page Uber', visible: true, en_desc: 'Uber landing page for PC', ru_desc:'Посадочная страница Uber, создана в рамках изучения CSS',
     link:'Proj_4/index.html',img:'img/LandingUber.JPG', gitLink: 'https://github.com/ArturKe'},
 
-    {title: 'Landing page Wordpress', en_desc: 'Wordpress landing page for PC', ru_desc:'Посадочная страница Wordpress, создана в рамках изучения CSS',
+    {title: 'Landing page Wordpress', visible: true, en_desc: 'Wordpress landing page for PC', ru_desc:'Посадочная страница Wordpress, создана в рамках изучения CSS',
      link:'Proj_1/index.html',img:'img/Landing.JPG', gitLink: 'https://github.com/ArturKe'},
 
-    {title: 'WebXR Lessons', en_desc: 'WebXR Lessons', ru_desc:'Уроки по WebXR',
+    {title: 'WebXR Lessons', visible: false, en_desc: 'WebXR Lessons', ru_desc:'Уроки по WebXR',
     link:'https://twindl.github.io/',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe'}
 
 ] 
@@ -97,41 +120,43 @@ function drawList(language='en'){
             lang = value.ru_desc
         }
 
-        list.innerHTML += `
-        <div class="proj_item">
-            <div class="item_first_block">
-                <a href="${value.link}"> 
-                    <div class="item_link"> Project #${counter} </div> 
-                </a>
-            </div>
-            <div class="item_second_block"> 
-    
-                <a href="${value.link}">
-                    <div class="item_img" style="background: url(${value.img})  center/cover no-repeat"> </div>
-                </a> 
-
-                <div class="item_desc">
-                    
-                    <div>
+        if (value.visible) {
+            list.innerHTML += `
+                <div class="proj_item">
+                    <div class="item_first_block">
                         <a href="${value.link}"> 
-                            <div class="item_title"> ${value.title} </div> 
-                        </a>
-                        <div class="item_desc_text">${lang}</div>
-                    </div>
-                    
-                    <div class="item_desc-buttons">
-                        <a href="${value.link}"> 
-                            <div class="item_link_git"> Demo </div> 
-                        </a>
-                        <a href="${value.gitLink}"> 
-                            <div class="item_link_git"> Git Link </div> 
+                            <div class="item_link"> Project #${counter} </div> 
                         </a>
                     </div>
+                    <div class="item_second_block"> 
+            
+                        <a href="${value.link}">
+                            <div class="item_img" style="background: url(${value.img})  center/cover no-repeat"> </div>
+                        </a> 
 
-                </div>
-                
-            </div>           
-        </div>`
+                        <div class="item_desc">
+                            
+                            <div>
+                                <a href="${value.link}"> 
+                                    <div class="item_title"> ${value.title} </div> 
+                                </a>
+                                <div class="item_desc_text">${lang}</div>
+                            </div>
+                            
+                            <div class="item_desc-buttons">
+                                <a href="${value.link}"> 
+                                    <div class="item_link_git"> Demo </div> 
+                                </a>
+                                <a href="${value.gitLink}"> 
+                                    <div class="item_link_git"> Git Link </div> 
+                                </a>
+                            </div>
+
+                        </div>
+                        
+                    </div>           
+                </div>`
+        }
     }
 
 }
