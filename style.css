@@ -17,29 +17,26 @@
     /* background-color: cadetblue; */
     margin: 30px auto 0px auto;
     display: flex;
+    gap: 20px;
     
     flex-wrap: wrap;
 }
 
 .first_info{
-    margin-top: 15px;
+    margin-top: 25px;
     width: 100%;
     text-align: center;
     font-size: 20px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
 }
 
 .port_wraper .port_img{
-/* background-color: burlywood; */
-
-width: 300px;
-height: 300px;
-background:  url('./img/photo_2021-03-01_06-46-15_crop1.jpg') center/cover no-repeat;
-border-radius: 100%;
-
-margin: 0 20px 0 20px;
+    width: 300px;
+    height: 300px;
+    background:  url('./img/photo_2021-03-01_06-46-15_crop1.jpg') center/cover no-repeat;
+    border-radius: 100%;
 }
 
 .port_img .img_inside{
@@ -49,8 +46,10 @@ margin: 0 20px 0 20px;
 .port_first_block{
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 20px;
     align-items: center;
+    border: 1px #cacaca solid;
+    border-radius: 60px;
 }
 .port_wraper .port_desc{
     min-width: 350px;
@@ -136,12 +135,12 @@ margin: 0 20px 0 20px;
     margin-top: 20px;
     font-weight: 800;
     font-size: 20px;
-    color: rgb(43, 43, 43);
+    color: rgb(51, 51, 51);
 }
 .port_desc .education span, .summary span{
     font-weight: 300;
     font-size: 15px;
-    color: black;
+    color: #525252;
 
 }
 
@@ -163,7 +162,7 @@ margin: 0 20px 0 20px;
 .proj_desc {
     background-color:#eeeeee;
     
-    height: 50px;
+    height: 44px;
     margin: 0 auto;
 
     text-align: center;
@@ -173,8 +172,8 @@ margin: 0 20px 0 20px;
     font-size: 25px;
     display: grid;
     align-content: center;
-    color: #7a7878;
-    border-radius: 30px 30px 0px 0px;
+    color: #626161;
+    border-radius: 30px;
 }
 
 /* -------------- Proj item --------------- */
@@ -220,6 +219,7 @@ margin: 0 20px 0 20px;
     border-left: 1px solid grey; */
     color: rgb(69, 69, 69);
     display: flex;
+    gap: 10px;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -229,6 +229,7 @@ margin: 0 20px 0 20px;
 .item_desc_text{
     padding: 3px;
     max-width: 550px;
+    color: #939393;
 }
 .item_first_block{
     width: 100%;
@@ -236,7 +237,7 @@ margin: 0 20px 0 20px;
     background-color: rgb(208, 208, 208);
     padding: 5px;
     padding-left: 15px;
-    border-radius:5px 5px 0 0 ;
+    border-radius:25px 25px 0 0 ;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -261,28 +262,29 @@ margin: 0 20px 0 20px;
 .item_second_block{
     width: 100%;
     display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
     flex-wrap: wrap;
 
     /* border-right: 2px solid rgb(208, 208, 208);
     border-left: 2px solid rgb(208, 208, 208);
     border-bottom: 2px solid rgb(208, 208, 208); */
-    border: 1px solid grey;
+
+    border: 1px solid rgb(208 208 208);
     border-radius:0 0 30px 30px;
     padding: 0 0 10px 10px;
 }
 
 .item_link_git{
-    width: 170px;
-    border-radius: 5px;
+    min-width: 155px;
+    border-radius: 20px;
     height: 35px;
     font-size: 20px;
-    color: rgb(62, 62, 62);
-    background-color: rgb(235, 235, 235);
-    padding: 5px;
-    /* border-radius:0 0 5px 5px;
-    border: 1px solid grey; */
-    text-align: center;
 
+    padding: 5px;
+    color: rgb(255 255 255);
+    background-color: rgb(157 157 157);
+    text-align: center;
 }
 
 .item_title{
@@ -290,12 +292,18 @@ margin: 0 20px 0 20px;
     margin: 5px 0;
     text-transform: uppercase;
     font-weight: 600;
-    color: #676565e8;
+    color: #4d4a4ae8;
 }
 
-@media  (max-width:490px) {
+.item_desc-buttons{
+    display: flex;
+    gap: 10px;
+}
+
+@media  (max-width:590px) {
     .item_second_block{
         justify-content: center;
+        padding: 0px 10px 10px
     }
 
     .proj_item .item_desc{
@@ -311,6 +319,9 @@ margin: 0 20px 0 20px;
         text-align: center;
     }
 
+    .item_desc-buttons{
+        justify-content: center;
+    }
     
 }
 

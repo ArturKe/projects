@@ -10,8 +10,13 @@ const ru_desc =document.querySelector('.ru_desc')
 const list = document.querySelector('.proj_list')
 
 const projList = [
-    {title: 'Venus 3D', en_desc: '3D viewer shows the sculpture of Venus de Milo. Made by using ThreeJS', ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS',
-    link:'venus-new/index.html',img:'img/Venus.JPG', gitLink: 'https://github.com/ArturKe/venus-scene'},
+    {title: 'Venus 3D', 
+        en_desc: '3D viewer shows the sculpture of Venus de Milo. Made by using ThreeJS, TypeScript', 
+        ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS, TypeScript',
+        link:'venus-new/index.html',
+        img:'img/Venus.JPG', 
+        gitLink: 'https://github.com/ArturKe/venus-scene'
+    },
 
     {title: 'JS Gallery', en_desc: 'Image gallery looks like Instagram frames. Customizable size of images and other parameters', ru_desc:'Галлерея изображения как в Инстаграмм, пролистывание осуществляется свайпами влево/вправо',
     link:'p5_gallery/index.html',img:'img/Gallery.JPG', gitLink: 'https://github.com/ArturKe/JS-Swipe-Gallery'},
@@ -98,26 +103,31 @@ function drawList(language='en'){
                 <a href="${value.link}"> 
                     <div class="item_link"> Project #${counter} </div> 
                 </a>
-                <a href="${value.gitLink}"> 
-                        <div class="item_link_git"> Git Link </div> 
-                </a>
             </div>
             <div class="item_second_block"> 
     
                 <a href="${value.link}">
                     <div class="item_img" style="background: url(${value.img})  center/cover no-repeat"> </div>
                 </a> 
-                
+
                 <div class="item_desc">
                     
                     <div>
-                    <a href="${value.link}"> 
-                        <div class="item_title"> ${value.title} </div> 
-                    </a>
-                    <div class="item_desc_text">${lang}</div>
-                    
+                        <a href="${value.link}"> 
+                            <div class="item_title"> ${value.title} </div> 
+                        </a>
+                        <div class="item_desc_text">${lang}</div>
                     </div>
                     
+                    <div class="item_desc-buttons">
+                        <a href="${value.link}"> 
+                            <div class="item_link_git"> Demo </div> 
+                        </a>
+                        <a href="${value.gitLink}"> 
+                            <div class="item_link_git"> Git Link </div> 
+                        </a>
+                    </div>
+
                 </div>
                 
             </div>           
