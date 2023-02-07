@@ -1,4 +1,4 @@
-# Home_Projects
-Home Projects
+# Projects
+My pet Projects
 
 Репозиторий с моими домашними проектами по верстке и программированию.
