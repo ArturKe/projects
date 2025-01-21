@@ -14,7 +14,7 @@ const projList = [
         visible: true,
         en_desc: '3D viewer shows the sculpture of Venus de Milo. Made by using ThreeJS, TypeScript', 
         ru_desc:'Скульптура Венеры Милосской. Создано с применением библиотеки ThreeJS, TypeScript',
-        link:'venus-new/index.html',
+        link:'https://transcendent-venus-demo.netlify.app/',
         img:'img/Venus.JPG', 
         gitLink: 'https://github.com/ArturKe/venus-scene'
     },
